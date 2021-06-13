@@ -176,8 +176,40 @@ Here is another example but using a interface inside the paramter
 You can also make the paramters optional by adding a ```?```. In functions example, you can make a paramter optional by writing ```greet(name?: string; age: number)```. 
 
 ## Array
+Array are a bit interesting in how you go about setting types on them. There is a special term called ```Tuple``` that governs the structure of an array. To write a tuple, you will write the below. (example taken from [Typescript: Handbook](https://www.typescriptlang.org/docs/handbook/basic-types.html)) 
+```
+// Declare a tuple type
+let x: [string, number];
+
+// Initialize it
+x = ["hello", 10]; // OK
+
+// Initialize it incorrectly
+x = [10, "hello"]; // Error
+
+Type 'number' is not assignable to type 'string'.
+Type 'string' is not assignable to type 'number'.
+```
+
+This where using `Type` comes in handy. Instead of writing a long `let x: [string, number];`, you can store them into a Type: `type Mylist = [string, number];` and then reference them like
+```
+const arr: MyList = [];
+arr.push("apple") // works because the first index is string.
+arr.push(23) // works
+arr.push(false) // ERROR: Argument of type 'boolean' is not assignable to parameter of type 'string | number'. The reason is because we didn't specify it in the Mylist. 
+```
+
+If you want your array to only be of a single type, you can write: 
+```
+const arr1: string[] = [];
+const arr2: number[] = [];
+const arr3: boolean[] = [];
+...
+```
+
 ## Anonymous Interface
 You can also specify anonymous interface like this. 
+
 ```
 function greet(person: { first: string; last: string }) {
   return "Hello " + person.first;
