@@ -22,7 +22,7 @@ icecream = 25;
 icecream = [];
 icecream = {};
 ```
-## Interface
+## Interface and Custom Types 
 A Interface defines the shape of the object you can create.
 ```
 interface Person {
@@ -30,16 +30,21 @@ interface Person {
   last: string,
 }
 ```
-Any objects that uses the interface of ```Person``` below **Must** only have the two properties: first and last, and they both must all be string values. 
+Any objects that uses the interface of ```Person```  **must** only have the two properties: first and last, and they both must all be string values. 
+```Person``` also becomes a custom type you created with your own structure. 
 
 ### Using Interface 
-To use ```Person```, you would specify the way you do with primitive ```: string```, ```:number```, etc...
-```
-const person: Person = {
+To use ```Person```, you would specify the same way you do with any other primitive ```: string```, ```:number```, etc...
+```  
+const person1: Person = {
   first: "weibo",
   last: "zhang",
 };
 ```
+This will check if ```person1``` has the right shape defined in the **Person** interface. If not, it will result in ERROR. 
+
+
+
 ## Anonymous Interface
 
 
