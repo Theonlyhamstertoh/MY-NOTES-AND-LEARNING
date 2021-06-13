@@ -1,5 +1,5 @@
 # React notes
-Please be aware the notes written here are a mostly on React Class Component. 
+Please be aware the notes written here are on React Class Component.  
 
 ## You use `super()` whenever you use a constructor in ES6 class
 - Required if you need it to access some information of the parent variables
