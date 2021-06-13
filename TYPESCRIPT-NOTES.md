@@ -225,6 +225,6 @@ interface Person {
 
 ```
 
-
-
+## Classes
+Read more here [on classes](https://www.typescriptlang.org/docs/handbook/2/classes.html)
 
