@@ -125,10 +125,73 @@ type typeExtendPerson = Person & {
 }
 ```
 
-
 ## Functions
+To use types on functions is a bit more trickier but the same ideas apply. If you want to make sure the parameters are of a specific type, you will need to write it inside the parameter like below: 
+```
+(example taken from Firebase [TypeScript - The Basics](https://www.youtube.com/watch?v=ahCwqrYpIuM)
+function pow(x: number, y: number) {
+    return Math.pow(x, y)
+}
+
+pow(4, 5) // works
+pow("4", 10) // ERROR 
+```
+
+```Math.pow(x, y)``` returns a number, what if you want to make sure the returned value is a string or a boolean value? How would you use typescript to check? You will simply add a `:thetypehere` variable before the function brackets to specify the returned value. 
+```
+//  the :string guarantees that the returned value is a string
+function pow(x: number, y: number): string {
+    return Math.pow(x, y).toString();
+}
+```
+
+What if you don't want to return any value and want Typescript to check? add a ```:void``` type and Typescript will know no value will be returned. This is often the case when you are creating event listeners and so on. 
+```
+//  the :string guarantees that the returned value is a string
+function pow(x: number, y: number): void {
+  console.log(Math.pow(x, y));
+}
+```
+You can also use interfaces and types in the function to check! This means, you can make sure the parameter has the predefined shape or must return a predefined shape like below: 
+
+```
+function createPerson(first: string, last: string):Person {
+  return {
+    first, 
+    last,
+  }
+}
+const person1 = createPerson("weibo", "zhang");
+console.log(person1) // returns { first: 'weibo', last: 'zhang' }
+```
+
+Here is another example but using a interface inside the paramter
+```
+  function greet(person: Person):string {
+    return "hello " + person.first;
+  }
+```
+
+## Optional ```?```
+You can also make the paramters optional by adding a ```?```. In functions example, you can make a paramter optional by writing ```greet(name?: string; age: number)```. 
+
 ## Array
 ## Anonymous Interface
+You can also specify anonymous interface like this. 
+```
+function greet(person: { first: string; last: string }) {
+  return "Hello " + person.first;
+}
+
+
+Equivalent to ----------------------
+
+interface Person {
+  first: string,
+  last: string,
+}
+
+```
 
 
 
