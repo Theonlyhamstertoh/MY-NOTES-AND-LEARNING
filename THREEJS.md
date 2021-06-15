@@ -29,6 +29,7 @@ If you have a high FOV, you will see a lot more but also have distortion. What t
 ## Renderer
 * Do a render of your scene and see through from your camera point of view. Then, it will show onto the canvas.
 * THREEJS will use WebGL to draw render inside the canvas.
+* Rendering is like taking picture. If you take picture of your friend and then tell your friend to move, the picture won't show friend moving. So put before renderer.
 ### BoxGeometry
 All of these are optional. By default, it is all pointed towards 1. 
 ```
@@ -95,10 +96,16 @@ Any object that comes from **Object3D** has the following properties:
 * Rotation
 * Quaternion 
 
-All properties will be compiled into matrices. But what is Matrices?
+Example: 
+```
+  mesh.rotation.y = 1;  <--- 1 can be anything. You decide if it is feet, yards, miles, and so on. Do what makes you easy.
+  mesh.rotation.x = 1;
+```
+All properties will be compiled into matrices. But what is Matrices? 
 
 ### Matrices
 Just a rectangle array of numbers. All the numbers are entries in the matrices. When you say it's 2x3 matriv, they are telling you there is two rows and three columns. A 1x1 matrix is just one number. [3, 7, 17] is a 1x3 matrix.
 * They are a way to represent information. However, really valuable in computer graphics because they can represent if an object is there or how intense the colors are.
+
 
 
