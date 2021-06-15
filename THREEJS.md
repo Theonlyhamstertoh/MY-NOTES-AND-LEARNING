@@ -86,3 +86,19 @@ function animate() {
 }
 animate();
 ```
+
+
+## TRANSFORMING
+Any object that comes from **Object3D** has the following properties: 
+* Position
+* Scale
+* Rotation
+* Quaternion 
+
+All properties will be compiled into matrices. But what is Matrices?
+
+### Matrices
+Just a rectangle array of numbers. All the numbers are entries in the matrices. When you say it's 2x3 matriv, they are telling you there is two rows and three columns. A 1x1 matrix is just one number. [3, 7, 17] is a 1x3 matrix.
+* They are a way to represent information. However, really valuable in computer graphics because they can represent if an object is there or how intense the colors are.
+
+
