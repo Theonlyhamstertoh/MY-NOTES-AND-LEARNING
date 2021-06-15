@@ -30,7 +30,8 @@ If you have a high FOV, you will see a lot more but also have distortion. What t
 * Do a render of your scene and see through from your camera point of view. Then, it will show onto the canvas.
 * THREEJS will use WebGL to draw render inside the canvas.
 * Rendering is like taking picture. If you take picture of your friend and then tell your friend to move, the picture won't show friend moving. So put before renderer.
-### BoxGeometry
+
+## BoxGeometry
 All of these are optional. By default, it is all pointed towards 1. 
 ```
 THREE.BoxGeometry(
@@ -102,7 +103,7 @@ Example:
   mesh.rotation.x = 1;
   mesh.position.length() === finds length from orgin to current position. 
 ```
-#### Vector3
+## Vector3
 A 3d vector and has more than just x y and z. 
 All properties will be compiled into matrices. But what is Matrices? 
 
@@ -110,12 +111,30 @@ All properties will be compiled into matrices. But what is Matrices?
 `mesh.position.distanceTo(camera.position)` 
 `mesh.position.distanceTo(new Vector(1, 1, 1)`
 
-### `position.normalize()`
+####   `position.normalize()`
 `mesh.position.normalize();` will bring the mesh object towards the camera so that the length becomes only 1. If you had the cube somewhere 10,000 miles away, you can use `mesh.position.normalize();` to bring the mesh only 1 miles away.
+
+#### `position.set(x, y, z)`
+The shorthand for writing 
+```
+  .position.x = 4;
+  .position.y = 4;
+  .position.z = 4;
+```
 
 ### Matrices
 Just a rectangle array of numbers. All the numbers are entries in the matrices. When you say it's 2x3 matriv, they are telling you there is two rows and three columns. A 1x1 matrix is just one number. [3, 7, 17] is a 1x3 matrix.
 * They are a way to represent information. However, really valuable in computer graphics because they can represent if an object is there or how intense the colors are.
+
+### Axes Helper
+Positioning objects is really hard. But if you use the Axes helper, it will show the X Y Z line for you! The X axis is red. The Y axis is green. The Z axis is blue.
+![image](https://user-images.githubusercontent.com/75579372/122085333-77f22800-cdb7-11eb-95f4-bf4d87060fe4.png)
+
+To write one:
+`
+const axesHelper = new THREE.AxesHelper( 5 );
+scene.add( axesHelper );
+`
 
 
 
