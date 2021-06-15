@@ -43,7 +43,7 @@ THREE.BoxGeometry(
 
 To create a geometry, write `const geometry = new THREE.BoxGeometry(1, 1, 1);`
 
-### Creating a simple red cube
+### Creating a simple rotating cube
 ```
 // Scene
 const scene = new THREE.Scene();
