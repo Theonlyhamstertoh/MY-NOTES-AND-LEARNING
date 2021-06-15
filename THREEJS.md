@@ -91,7 +91,7 @@ animate();
 
 ## TRANSFORMING
 Any object that comes from **Object3D** has the following properties: 
-* Position
+* Position <-- a vector3. 
 * Scale
 * Rotation
 * Quaternion 
@@ -100,8 +100,18 @@ Example:
 ```
   mesh.rotation.y = 1;  <--- 1 can be anything. You decide if it is feet, yards, miles, and so on. Do what makes you easy.
   mesh.rotation.x = 1;
+  mesh.position.length() === finds length from orgin to current position. 
 ```
+#### Vector3
+A 3d vector and has more than just x y and z. 
 All properties will be compiled into matrices. But what is Matrices? 
+
+#### Find distance from one point to another
+`mesh.position.distanceTo(camera.position)` 
+`mesh.position.distanceTo(new Vector(1, 1, 1)`
+
+### `position.normalize()`
+`mesh.position.normalize();` will bring the mesh object towards the camera so that the length becomes only 1. If you had the cube somewhere 10,000 miles away, you can use `mesh.position.normalize();` to bring the mesh only 1 miles away.
 
 ### Matrices
 Just a rectangle array of numbers. All the numbers are entries in the matrices. When you say it's 2x3 matriv, they are telling you there is two rows and three columns. A 1x1 matrix is just one number. [3, 7, 17] is a 1x3 matrix.
