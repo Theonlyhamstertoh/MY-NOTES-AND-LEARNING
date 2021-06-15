@@ -18,6 +18,17 @@ Can create objects from
 ## Mesh
 Class representing triangular polygon mesh. It's a combination of geometry (shape) and material (the color of shape)
 
+## Camera
+You can have multiple cameras just like a movie set but you really only have one camera being moved around in Javascript. You can also have different types of cameras! 
+`
+const camera = new THREE.PerspectiveCamera(verticalFOV , width / height, near, far )
+scene.add(camera)
+` 
+If you have a high FOV, you will see a lot more but also have distortion. What the near and far means is that if the object exceeds or falls below the values, it will not render it.
+
+## Renderer
+* Do a render of your scene and see through from your camera point of view. Then, it will show onto the canvas.
+* THREEJS will use WebGL to draw render inside the canvas.
 ### BoxGeometry
 All of these are optional. By default, it is all pointed towards 1. 
 ```
@@ -40,12 +51,38 @@ const scene = new THREE.Scene();
 // Simply a geometry
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 // MeshBasicMaterial takes an object which can be {color: ...} to style it.
-
-const material = new THREE.MeshBasicMaterial({ color: "red" });
+const material = new THREE.MeshBasicMaterial({ color: 0xffccee });
 //put together the geometry and the material to form a object!
-
 const cube = new THREE.Mesh(geometry, material);
 // add the red cube to the scene.
-
 scene.add(cube);
+
+const sizes = {
+  width: 800,
+  height: 600,
+};
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height);
+camera.position.z = 5;
+scene.add(camera);
+
+// renderer
+const canvas = document.querySelector(".webgl");
+const renderer = new THREE.WebGLRenderer({
+  canvas: canvas,
+});
+// set size of the canvas
+renderer.setSize(sizes.width, sizes.height);
+
+// to show the CUBE
+renderer.render(scene, camera);
+// if you see black, you are inside the object! Colors only exist on the outside but not on the inside.
+
+function animate() {
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
+  cube.rotation.z += 0.01;
+}
+animate();
 ```
