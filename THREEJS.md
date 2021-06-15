@@ -131,10 +131,19 @@ Positioning objects is really hard. But if you use the Axes helper, it will show
 ![image](https://user-images.githubusercontent.com/75579372/122085333-77f22800-cdb7-11eb-95f4-bf4d87060fe4.png)
 
 To write one:
-`
+```
 const axesHelper = new THREE.AxesHelper( 5 );
 scene.add( axesHelper );
-`
+```
 
+### Gimbal Lock
+There is a problem with using rotation and it is that two different axes may be rotating in the same direction. For example, take a look at the image below: 
+![image](https://user-images.githubusercontent.com/75579372/122096838-d4f3db00-cdc3-11eb-9e66-2a2fb694631e.png)
 
+And look at what happens if we rotate the Red 90 degrees
+![image](https://user-images.githubusercontent.com/75579372/122096921-ee952280-cdc3-11eb-9d2b-274376546292.png)
+
+now the green and blue will change in the same direction.
+
+Use `mesh.rotation.reoder("yxz")` so that you change the order
 
