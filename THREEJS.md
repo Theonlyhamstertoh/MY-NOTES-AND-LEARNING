@@ -26,6 +26,8 @@ scene.add(camera)
 ` 
 If you have a high FOV, you will see a lot more but also have distortion. What the near and far means is that if the object exceeds or falls below the values, it will not render it.
 
+### `camera.lookAt(object)`
+This will point the camera at the object. But do it after setting position or else you would only see it's original one instead of the changed.
 ## Renderer
 * Do a render of your scene and see through from your camera point of view. Then, it will show onto the canvas.
 * THREEJS will use WebGL to draw render inside the canvas.
@@ -147,3 +149,18 @@ now the green and blue will change in the same direction.
 
 Use `mesh.rotation.reoder("yxz")` so that you change the order
 
+### Quaternion
+One solution to avoiding the gimbal lock is to use quaternion.
+
+
+### Group
+Imagine you have a really complex object. A house with walls, bed, windows, roof, frames, piano, stairs, etc and you decided that you want to make the house a bit bigger or move them a little to the left. You will have to literally move every single object this way and it would takes hours! The secret sauce to solving this is to group everything together. Make it a habit to group objects when you should. Now, if you group all the objects as a House object, you can scale, translate, rotate, as a entire object!
+
+To group a object, write 
+```
+const group = new THREE.Group();
+group.add(cube1);
+group.add(cube2);
+group.position.x = 1  <-- now all items will be moved as one!
+```
+You can also shorten the way you create mesh items. Put everything in one!
