@@ -189,7 +189,14 @@ On a slow computer, it would look like
 From comparing the two above, you can see that on the slower computer, the rotation is essentially doubled to be twice as fast than the fast computer. This is what keeps the animation in sync no matter how good of a computer you have. The fast computer has 60 frames while the slow has 30. The fast will render 60 times compared to the slow rendering only 30 times. The slow makes up the framerate gap by doubling the rotation speed. 1 frame in slow === 2 frames in fast. And that ratio works out to look smooth throughout the minute. 
 
 
+#### Alternative Way than DeltaTime
+You can use ThreeJS prebuilt `clock.getElapsedTime()` that will start at 0 when initalize. It will then update with that. 
+To get a full revolution per second, you will need to write `clock.geteLapsedTime() * Math.PI * 2` 
 
+Don't recommend using `getDelta()`. It may work in one project and don't in another. 
+
+### Use a library if you want to do advance animations. 
+GSAP learning currently.
 
 
 
