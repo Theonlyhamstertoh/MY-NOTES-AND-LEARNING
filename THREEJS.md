@@ -208,10 +208,40 @@ const loop = () => {
 loop();
 ```
 
+## All About Cameras
+
+### Camera
+Abstract base class for camera. Not intended to be used directly. It's a class that should be inherited when you build a new camera with `PerspectiveCamera` or `OrthographicCamera`. All cameras below inherit the Camera class.
+
+### ArrayCamera
+An array of cameras to efficiently render a scene. Very important when creating VR scenes. This is useful when you have multiplayer game and playing with split screen. Renders scene from multiple cameras on specific areas of the render. 
+
+![image](https://user-images.githubusercontent.com/75579372/122254799-5447e400-ce82-11eb-9259-728d5bb3748c.png)
+
+### CubeCamera
+A cubeCamera is 6 cameras. Used often to create more realistic reflections on objects like sphere, cube, etc. One forward, back, left, right, to, and bottom. Create a render of the surrounding. Things like 360 maps, reflection, shadows, and so on.
+
+![image](https://user-images.githubusercontent.com/75579372/122256201-afc6a180-ce83-11eb-81b0-b12b8de9f72b.png)
+
+### Orthographic Camera
+Renders the scene without perspective. Useful for 2D games. If you go further, the characters stays the same size.Object in front of you will have same **SIZE** despite how far or close. Look at the image below, a orthographic camera is more like a rectangle compared to the Perspective camera looking like a cone. 
+`const camera = new THREE.OrthographicCamera(left, right, top, bottom, near?, far?)`
+
+![image](https://user-images.githubusercontent.com/75579372/122259231-d0442b00-ce86-11eb-8e26-bf688cd81436.png)
 
 
+To keep the camera aspect ratio: `const camera = new THREE.OrthographicCamera(-1 * aspectRatio, 1 * aspectRatio, 1, -1, 0.1, 100);`
 
+### Perspective Camera
+Most common for rendering 3D scenes and micmic human eyes.
+Decide the Vertical FOV in the beginning. 
+`new THREE.PerpsectiveCamera(Vertical FOV in degrees, near, far)`
+DO NOT put for `near` or `far` something like: `0.0000001` and `999999999999999`. This is a bug called z-fighting when the GPU doesn't know what object is in front or behind.
 
+![image](https://user-images.githubusercontent.com/75579372/122259262-d803cf80-ce86-11eb-828f-e2d59f2772be.png)
+
+### SteroCamera
+Render the scene through two renders to micmic the eye. Can create depth effect, red and blue glasses, etc. Imagine VR. One eye will see one render camera. Another eye will see another render camera.
 
 
 
