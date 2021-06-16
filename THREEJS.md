@@ -163,3 +163,41 @@ group.add(cube2);
 group.position.x = 1  <-- now all items will be moved as one!
 ```
 You can also shorten the way you create mesh items. Put everything in one!
+
+
+## Animation
+Animation is like a stop motion. You move a object and take a picture. Move the object a bit more and take a picture. So you need to take 60 pictures per second to feel smooth. You have to make sure that your animation maintain the high framerate per second. If too slow, you will see the object skipping across. 
+
+**`RequestAnimationFrame()`**
+Purpose is **not** to do **ANIMATION**. The purpose is to called the same function again on the next frame. 
+
+#### Problem
+A problem that occurs is that if you have a faster framerate per second, you will make the animation go fast. If slow FPS, the cube will move slower. 
+To solve this issue, we will need to use `DeltaTime`. `DeltaTime` is the time that is the difference from the new time to previous time. 
+
+Let us say you have a computer that has consistent 60FPS per second and renders a new frame every 10miliseconds. Now, imagine you have another computer that renders at 30FPS now with every new frame with a gap of 20 ms. By the end of a minute, both the slow computer and the fast one will look smooth nontheless. The 10 miliseconds and the 20 are what is called DeltaTime.`30x20 = 600` and `60x10=600` are the same value. 
+
+Let's say you are doing animation like this `cube.rotation.x = 1 * DeltaTime` 
+
+On a fast computer, it would look like, 
+`cube.rotation.x = 1 * 10.`
+
+On a slow computer, it would look like
+`cube.rotation.x = 1 * 20`
+
+From comparing the two above, you can see that on the slower computer, the rotation is essentially doubled to be twice as fast than the fast computer. This is what keeps the animation in sync no matter how good of a computer you have. The fast computer has 60 frames while the slow has 30. The fast will render 60 times compared to the slow rendering only 30 times. The slow makes up the framerate gap by doubling the rotation speed. 1 frame in slow === 2 frames in fast. And that ratio works out to look smooth throughout the minute. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
