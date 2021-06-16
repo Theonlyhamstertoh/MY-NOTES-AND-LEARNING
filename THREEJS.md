@@ -196,8 +196,17 @@ To get a full revolution per second, you will need to write `clock.geteLapsedTim
 Don't recommend using `getDelta()`. It may work in one project and don't in another. 
 
 ### Use a library if you want to do advance animations. 
-GSAP learning currently.
 
+Simple GSAP
+```
+gsap.to(mesh.position, { duration: 1, delay: 1, x: 5, y: 2 });
+gsap.to(mesh.position, { duration: 1, delay: 3, x: 0, y: 0 });
+const loop = () => {
+  requestAnimationFrame(loop);
+  renderer.render(scene, camera);
+};
+loop();
+```
 
 
 
