@@ -297,3 +297,83 @@ window.addEventListener("dblclick", (e) => {
 ```
 
 ## Geometry
+What exactly is a geometry in THREEJS? They are composed of vertices (point coordinates in 3D space) and faces (triangles that join those vertices). Can also be used for meshes and particles. Can store more data than positions (UV Coordinates, normals, colors, anything).
+
+![image](https://user-images.githubusercontent.com/75579372/122444264-37301580-cf55-11eb-9c35-d5822b6aa273.png)
+
+
+All built in geometries inherit from `Geometry` class. 
+
+### Different Types of Geometries
+#### BoxGeometry
+![image](https://user-images.githubusercontent.com/75579372/122445849-d275ba80-cf56-11eb-9ed8-6eaf6c610a85.png)
+
+#### CircleGeometry
+![image](https://user-images.githubusercontent.com/75579372/122445943-f0dbb600-cf56-11eb-99e2-4a32a63187e9.png)
+
+#### ConeGeometry
+![image](https://user-images.githubusercontent.com/75579372/122445960-f6390080-cf56-11eb-8571-708f294aade4.png)
+
+#### CylinderGeometry
+![image](https://user-images.githubusercontent.com/75579372/122445972-fc2ee180-cf56-11eb-9b2a-92bae0733681.png)
+
+#### DodecahedronGeometry (12 flat faces)
+![image](https://user-images.githubusercontent.com/75579372/122445992-018c2c00-cf57-11eb-9f41-39b7a47f7e8a.png)
+
+#### EdgesGeometry
+To help see edges of a geometry
+#### ExtrudeGeometry
+![image](https://user-images.githubusercontent.com/75579372/122446143-2ed8da00-cf57-11eb-8c1a-ad42ce3324ec.png)
+
+#### IcosahedronGeometry (20 sided face)
+![image](https://user-images.githubusercontent.com/75579372/122446174-35675180-cf57-11eb-9f05-9ef1d3102b8b.png)
+
+#### LatheGeometry
+![image](https://user-images.githubusercontent.com/75579372/122446229-46b05e00-cf57-11eb-8068-9103f704cdb2.png)
+
+#### OctahedronGeometry
+![image](https://user-images.githubusercontent.com/75579372/122446257-4fa12f80-cf57-11eb-92cf-632f9a1d4854.png)
+
+#### ParametricGeometry
+![image](https://user-images.githubusercontent.com/75579372/122446270-54fe7a00-cf57-11eb-885d-2d92fe613bda.png)
+
+#### PlaneGeometry
+![image](https://user-images.githubusercontent.com/75579372/122446290-5af45b00-cf57-11eb-81ae-8f3251036beb.png)
+
+#### PolyhedronGeometry
+A polyhedron is a solid in 3D space with flat faces. Takes array of vertices and project them onto a sphere and devide them up to desire level. Used by Dodecahedron, Isosahedron, octahedron, tetrahedron.
+
+#### RingGeometry
+![image](https://user-images.githubusercontent.com/75579372/122446502-97c05200-cf57-11eb-8e49-e2b73a92b838.png)
+
+#### ShapeGeometry
+Creating on sided shapes from path shapes. Like using `moveTo` and `bezierCurveTo`. 
+
+![image](https://user-images.githubusercontent.com/75579372/122446542-a444aa80-cf57-11eb-920f-eb42af7484dd.png)
+
+#### SphereGeometry
+![image](https://user-images.githubusercontent.com/75579372/122446674-c8a08700-cf57-11eb-95ff-32c65ac4bb5c.png)
+
+#### TetrahedronGeometry
+![image](https://user-images.githubusercontent.com/75579372/122446709-d2c28580-cf57-11eb-9066-572ece0c7ffb.png)
+
+#### TextGeometry
+![image](https://user-images.githubusercontent.com/75579372/122446811-ee2d9080-cf57-11eb-9978-9d79d2549914.png)
+
+`TextGeometry(text, parameters)`
+
+#### TorusGeometry
+![image](https://user-images.githubusercontent.com/75579372/122446880-01406080-cf58-11eb-9d18-4bb668aa8390.png)
+
+#### TorusKnotGeometry
+![image](https://user-images.githubusercontent.com/75579372/122446929-10271300-cf58-11eb-8b1a-0d22da5e766a.png)
+
+
+#### TubeGeometry
+![image](https://user-images.githubusercontent.com/75579372/122446978-1b7a3e80-cf58-11eb-9d79-fb8f98e305df.png)
+
+
+#### WireframeGeometry
+![image](https://user-images.githubusercontent.com/75579372/122447038-2a60f100-cf58-11eb-9754-5c8cbbfe21ad.png)
+
+
