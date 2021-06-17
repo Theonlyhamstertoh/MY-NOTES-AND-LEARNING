@@ -273,3 +273,23 @@ You might see this when your screen has a pixel ratio **greater than 1**. Pixel 
 Use `Window.devicePixelRatio` to check your pixelRatio. And `renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)`. Math.MIN will pick the minimum of the two. If you have a pixelRatio of 1, it will pick 1. If 1.25, it will pick 1.25. But if you have more than 2, it will stay 2. This is how you limit the pixel sizing.
 
 
+### Listen for double click fullscreen
+```
+window.addEventListener("dblclick", (e) => {
+  const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement;
+  if (!fullscreenElement) {
+    if (renderer.domElement.requestFullscreen()) {
+      renderer.domElement.requestFullscreen();
+    } else if (renderer.domElement.webkitRequestFullscreen()) {
+      renderer.domElement.webkitRequestFullscreen();
+    }
+  } else {
+    if (renderer.domElement.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (renderer.domElement.webkitExitFullscreen) {
+      renderer.domElement.webkitExitFullscreen();
+    }
+    document.exitFullscreen();
+  }
+});
+```
