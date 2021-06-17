@@ -259,8 +259,17 @@ window.addEventListener("resize", (e) => {
   // update camera
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
+  //update pixel ratio in case go to new screen
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 ```
 
 ### Blurry or stair like cube?
-You might see this when your screen has a pixel ratio **greater than 1**. Pixel Ratio corresponds to how many physical pixels you have on the screen for one pixel unit. 
+You might see this when your screen has a pixel ratio **greater than 1**. Pixel Ratio corresponds to how many physical pixels you have on the screen for one pixel unit. For years, all screens had a pixel ratio of 1. Now, companies like Apple starts building screens with a pixel ratio of 2. This means 4 times more pixels are renderer.  Highest pixel ratios are usually on the weakest device - mobiles. It's marketing. You don't need more than 2-3. 
+
+![image](https://user-images.githubusercontent.com/75579372/122425227-2fb44080-cf44-11eb-81f1-263196feede0.png)
+
+### ALWAYS HAVE THIS
+Use `Window.devicePixelRatio` to check your pixelRatio. And `renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)`. Math.MIN will pick the minimum of the two. If you have a pixelRatio of 1, it will pick 1. If 1.25, it will pick 1.25. But if you have more than 2, it will stay 2. This is how you limit the pixel sizing.
+
+
