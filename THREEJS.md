@@ -26,6 +26,8 @@ scene.add(camera)
 ` 
 If you have a high FOV, you will see a lot more but also have distortion. What the near and far means is that if the object exceeds or falls below the values, it will not render it.
 
+If You don't add camera to scene, it is automatically added for you.
+
 ### `camera.lookAt(object)`
 This will point the camera at the object. But do it after setting position or else you would only see it's original one instead of the changed.
 ## Renderer
@@ -293,3 +295,5 @@ window.addEventListener("dblclick", (e) => {
   }
 });
 ```
+
+## Geometry
