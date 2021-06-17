@@ -243,8 +243,24 @@ DO NOT put for `near` or `far` something like: `0.0000001` and `999999999999999`
 ### SteroCamera
 Render the scene through two renders to micmic the eye. Can create depth effect, red and blue glasses, etc. Imagine VR. One eye will see one render camera. Another eye will see another render camera.
 
+## Fullscreen mode
+```
+body { overflow: hidden }
+canvas {
+  display: block;
+  outline: none; <-- other browser can have blue outline
+}
+```
+Remember to update the camera as well:
+```
+window.addEventListener("resize", (e) => {
+  //update renderer
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  // update camera
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+});
+```
 
-
-
-
-
+### Blurry or stair like cube?
+You might see this when your screen has a pixel ratio **greater than 1**. Pixel Ratio corresponds to how many physical pixels you have on the screen for one pixel unit. 
