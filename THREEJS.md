@@ -456,7 +456,7 @@ const parameters = {
 A function has to be stored in an object.
 
 
-## Textures
+# Textures
 Textures are based on images that cover surface of geometries. 
 
 ### Color (Albedo)
@@ -518,9 +518,55 @@ Textures are based on images that cover surface of geometries.
 * White is rough. Black is smooth.
 * For light dissipation. Carpet is really rough which means it's really white. Think of a mirror. It is very smooth so it will be completely black. This is so the light can bounce. 
 
-### Follows PBR (Physically Based Rendering)
-
+# Texture Follows PBR (Physically Based Rendering)
+* Metalness and roughness really follow this
+* Many companies are using it
+* Becoming the standard for realistic rendering
+* Get really realistic results
+* Follow real life. Light bouncing.
 
 ![image](https://user-images.githubusercontent.com/75579372/122622544-e9e39f00-d04d-11eb-995a-7f8bfd9911f3.png)
+
+## Using texture image
+```
+const image = new Image();
+const texture = new THREE.Texture(image)
+image.onload = () => texture.needsUpdate = true
+image.src = "/textures/door/color.jpg"
+```
+
+Another way is to use `TextureLoader` 
+```
+// one texture loader can load multiple textures.
+const textureLoader = new THREE.TextureLoader();
+const texture = textureLoader.load("/textures/door/color.jpg"); <- has three optional parameters: load, progress, error. All have to be functions. 
+```
+
+## LoadingManagers
+* Mutualize the entire events and know all the progress in the loadings. You can then create a loading progress bar. Use inside the loader. 
+```
+const loadingManager = new THREE.LoadingManager();
+loadingManager.onStart = () => console.log("loading started");
+loadingManager.onProgress = () => console.log("progress");
+loadingManager.onLoad = () => console.log("loading finished");
+
+const textureLoader = new THREE.TextureLoader(loadingManager);
+```
+
+## What is UV UnWrapping
+There is a problem with using different shapes. If you switch from box to a circle, the image will be stretched like this: 
+
+![image](https://user-images.githubusercontent.com/75579372/122624255-20bcb380-d054-11eb-8436-004d509511d8.png)
+
+UV Unwrapping is like unwraping an origami or a candy wrap to make it flat. It's the same id square. 
+
+![image](https://user-images.githubusercontent.com/75579372/122624286-5bbee700-d054-11eb-81cc-0414098af3c2.png)
+
+![image](https://user-images.githubusercontent.com/75579372/122624304-742f0180-d054-11eb-8b76-2fe1b60789da.png)
+
+
+
+
+
 
 
