@@ -456,3 +456,71 @@ const parameters = {
 A function has to be stored in an object.
 
 
+## Textures
+Textures are based on images that cover surface of geometries. 
+
+### Color (Albedo)
+* Most simple one
+* Applied on the geometry
+
+![image](https://user-images.githubusercontent.com/75579372/122622679-4e066300-d04e-11eb-96e3-fe7d3dedf416.png)
+
+
+### Alpha
+* Grayscale image
+* white visible
+* black not visible
+* grey half visible
+
+### Height
+* Create elevation. 
+* grayscale image
+* If white, it goes up. If down, it goes down. If perfect white and black, it won't move.
+* Move the vertices to create the height difference.
+* Need a lot of subdivisions
+
+![image](https://user-images.githubusercontent.com/75579372/122622702-65455080-d04e-11eb-986e-438eadc8bc91.png)
+
+![image](https://user-images.githubusercontent.com/75579372/122622745-8e65e100-d04e-11eb-80eb-0b0af51ef82a.png)
+
+
+### Normal
+* Add details on lighting
+* Doesn't need subdivisions
+* Lure the light of the face orientation.
+* Make it look like it has height but doesn't.
+* Better performances than adding a height texture with a lot of subdivisions
+* Really cool.
+
+![image](https://user-images.githubusercontent.com/75579372/122622748-9291fe80-d04e-11eb-976a-4c20bf1db305.png)
+
+
+### Ambient
+* Grayscale mage
+* add fake shadows in crevices
+* Not physically accurate
+* Helps to create contrats and see details
+
+![image](https://user-images.githubusercontent.com/75579372/122622504-c6b8ef80-d04d-11eb-8716-b492eb39c47c.png)
+
+### Metalness
+* Grayscale image
+* White is metallic
+* Black is non-metallic
+* Mostly for reflection.
+* Can see what is behind
+
+![image](https://user-images.githubusercontent.com/75579372/122622531-de907380-d04d-11eb-827a-ffed9765d0c9.png)
+
+### Roughness
+* Grayscale image
+* Works in duo with metalness
+* White is rough. Black is smooth.
+* For light dissipation. Carpet is really rough which means it's really white. Think of a mirror. It is very smooth so it will be completely black. This is so the light can bounce. 
+
+### Follows PBR (Physically Based Rendering)
+
+
+![image](https://user-images.githubusercontent.com/75579372/122622544-e9e39f00-d04d-11eb-995a-7f8bfd9911f3.png)
+
+
