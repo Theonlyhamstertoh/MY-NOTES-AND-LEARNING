@@ -306,6 +306,7 @@ All built in geometries inherit from `Geometry` class.
 
 ### Different Types of Geometries
 #### BoxGeometry
+
 ![image](https://user-images.githubusercontent.com/75579372/122445849-d275ba80-cf56-11eb-9ed8-6eaf6c610a85.png)
 
 #### CircleGeometry
@@ -375,5 +376,83 @@ Creating on sided shapes from path shapes. Like using `moveTo` and `bezierCurveT
 
 #### WireframeGeometry
 ![image](https://user-images.githubusercontent.com/75579372/122447038-2a60f100-cf58-11eb-9754-5c8cbbfe21ad.png)
+
+### Why do you need more triangles?
+![image](https://user-images.githubusercontent.com/75579372/122448292-782a2900-cf59-11eb-8a6a-0f8dbc10f213.png)
+
+You need more if you want to do complex design such as a mountain. With more triangles, you can create a irregular terrain.
+
+## To Create a Geometry without any built in: 
+```
+const geometry = new THREE.Geometry();
+
+// creates the vertices
+const vertex1 = new THREE.Vector3(0, 0, 0);
+const vertex2 = new THREE.Vector3(0, 3, 0);
+const vertex3 = new THREE.Vector3(1, 0, 0);
+geometry.vertices.push(vertex1);
+geometry.vertices.push(vertex2);
+geometry.vertices.push(vertex3);
+
+// create face. You put 0, 1, 2 because they are the index inside the vertices array.
+const face = new THREE.Face3(0, 1, 2);
+geometry.faces.push(face);
+```
+## BUFFER GEOMETRIES
+Are much more efficient and optimized but less developer-friendly. You have to use them for performance reasoning. You will have to write a lot more code. When they are simple geometries, just use them! Get into the of using them. 
+
+It will be a bit harder when creating your own buffered geometries
+Geometry share common vertices and you can specify a bunch of vertices that can be reused by the GPU.
+### Float32Array
+A typed array. Can only store floats. Have a fixed length. Easier to handle for the computer. 
+
+## Creating a Debug Panel
+This is very important because it takes too long to change the value by yourself. It doesn't just serve for you to makign it easy but also for the client. It's very important and must not neglect. What you need a Debug UI. Without it, you won't be able to find the perfect values! 
+
+Libraries you can use are
+```
+dat.GUI
+control-panel
+Guify
+Oui
+```
+
+### dat.GUI
+![image](https://user-images.githubusercontent.com/75579372/122578543-d104ca80-d008-11eb-8ea2-b8827797ae3d.png)
+
+![image](https://user-images.githubusercontent.com/75579372/122588355-d6b3dd80-d013-11eb-941f-01c50e07496f.png)
+
+```
+import * as dat from "dat.gui"
+const gui = new dat.GUI();
+```
+
+You can have folders and go deeper. To add a property, `gui.add(object, property you want to tweak)`. It only accepts an object to tweak. By doing this, you only however get numbers. To have more controls, add paramters. `gui.add(mesh.position, min, max, step)`
+
+![image](https://user-images.githubusercontent.com/75579372/122588946-87ba7800-d014-11eb-8e4f-e4f25a1e0733.png)
+
+Another way: 
+`gui.add(torusKnot.position, "x").min(-3).max(3).step(0.01);` This is called chaining. 
+
+Doing this definitely makes life easier. No longer do you have to manage a lot of different objects and instead delegate it to the GUI.
+
+Press `H` or `gui.hide()` to hide. `new dat.GUI({closed: true})` to close on default.  `new dat.GUI({width: 400})` to increase default width.
+#### Checkbox
+`gui.add(torusKnot, "visible")` It will automatically detect boolean values. 
+
+#### Color
+```
+const parameters = {
+  color: 0xff0000,
+};
+```
+
+`gui.add(parameters, "color").onChange(() => mesh.material.set(paramters.color))`
+
+
+![image](https://user-images.githubusercontent.com/75579372/122591610-09f86b80-d018-11eb-96ca-835f0602318a.png)
+
+#### Functions
+A function has to be stored in an object.
 
 
