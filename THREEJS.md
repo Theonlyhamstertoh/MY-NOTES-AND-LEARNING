@@ -576,6 +576,8 @@ colorTexture.wrapS = THREE.MirroredRepeatWrapping;
 colorTexture.wrapT = THREE.MirroredRepeatWrapping;
 ```
 
+ClampToEdgeWrapping is the default. The last pixel of the texture stretches to the edge of the mesh.
+
 ### Offset
 Set the offset from the beginning position.
 
@@ -595,6 +597,36 @@ To rotate center: do
 colorTexture.center.x = 0.5;
 colorTexture.center.y = 0.5;
 ```
+
+## Mipmapping
+Technique of creating half a smaller version of a texture again and again until we get `1x1` texture. They are sent to the GPU and chosen for the appriopriate situation. 
+
+![image](https://user-images.githubusercontent.com/75579372/122649223-bbaf9f00-d0e1-11eb-8a3c-bc3a7a561a4b.png)
+
+![image](https://user-images.githubusercontent.com/75579372/122649250-d3872300-d0e1-11eb-85c7-5a0961999dc1.png)
+
+
+### Minificiation Filter
+Happens when the pixel of texture are smaller than the pixel of the render. Can change the minification filter of texture. 
+ 
+ (From THREEJS DOC)
+**NearestFilter** returns the value of the texture element that is nearest (in Manhattan distance) to the specified texture coordinates.
+
+**LinearFilter** is the default and returns the weighted average of the four texture elements that are closest to the specified texture coordinates, and can include items wrapped or repeated from other parts of a texture, depending on the values of wrapS and wrapT, and on the exact mapping.
+
+**NearestMipmapNearestFilter** chooses the mipmap that most closely matches the size of the pixel being textured and uses the NearestFilter criterion (the texel nearest to the center of the pixel) to produce a texture value.
+
+**NearestMipmapLinearFilter** chooses the two mipmaps that most closely match the size of the pixel being textured and uses the NearestFilter criterion to produce a texture value from each mipmap. The final texture value is a weighted average of those two values.
+
+**LinearMipmapNearestFilter** chooses the mipmap that most closely matches the size of the pixel being textured and uses the LinearFilter criterion (a weighted average of the four texels that are closest to the center of the pixel) to produce a texture value.
+
+**LinearMipmapLinearFilter** is the default and chooses the two mipmaps that most closely match the size of the pixel being textured and uses the LinearFilter criterion to produce a texture value from each mipmap. The final texture value is a weighted average of those two values.
+
+### Magnification Filter
+The exact opposite of the minificiation filter. Happens when the pixel of the texture are bigger than the pixel of the render. in Other words, texture is too small for the surface to cover it. It looks blurry when stretched. The user will probably won't notice it is being stretched. A solution however if you want to make it not blurry is to use `THREE.NearestFilter` Below is the images that change after using the filter.
+
+![image](https://user-images.githubusercontent.com/75579372/122649648-9a4fb280-d0e3-11eb-8aa9-e47147d41330.png)
+![image](https://user-images.githubusercontent.com/75579372/122649638-90c64a80-d0e3-11eb-9502-68c95a1e4aed.png)
 
 
 
