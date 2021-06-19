@@ -734,5 +734,72 @@ doorGradient.generateMipmaps = false;
 * Supports lights with more realistic light algorithms
 * Supports roughness and metalness
 
+
+```
+material.aoMap = doorAmbientOcclusion;
+material.metalnessMap = doorMetalness;
+material.roughnessMap = doorRoughness;
+material.displacementMap = doorHeight; <-- the variation in height
+
+```
+
 ### aoMap 
 * Stands for Ambient Occlusion map. Will add shadows where the texture is dark. 
+* Not easy to add. You must provide a second set of UV named coordinates. 
+
+![image](https://user-images.githubusercontent.com/75579372/122657105-478eee80-d115-11eb-9a46-72f57c3d200c.png)
+
+```
+plane.geometry.setAttribute(
+  "uv2",
+  new THREE.BufferAttribute(plane.geometry.attributes.uv.array, 2)
+);
+
+material.aoMapIntensity = 10;
+material.aoMap = doorAmbient;
+```
+
+### Displacement 
+* Basically the `height.png`. it creates the feeling that there is a real 3D object. 
+`material.displacementMap = doorHeight; <-- the variation in height`
+
+### NormalMap
+* Adds detail without doing subdivisions. Look at the below! It's much better than having thousands of vertices. Try to use this when you can. 
+
+![image](https://user-images.githubusercontent.com/75579372/122657863-fafae180-d11b-11eb-89ae-27dca2990cde.png)
+
+
+## MeshPhysicalMaterial
+Same as `MeshStandardMaterial` but has a clear cloat above the surface. Very shiny and shiny. Very specific to the objects however. Use this if you need a clear coat. Otherwise, don't use because ti is more calculations for the GPU. 
+
+## PointsMaterials
+* Used to create particles. 
+
+## ShaderMaterial and RawShaderMaterial
+Can both be used to create your own material. 
+
+## Environment Map
+* An image of what is surrounding the scene and can be used to do reflection and refraction. Can do general lighting. 
+
+
+![image](https://user-images.githubusercontent.com/75579372/122657925-79578380-d11c-11eb-894f-2f67670326ed.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
