@@ -665,13 +665,30 @@ If you want to have transparency:
 ```
 material.opacity = 0.5;
 material.transparent = true; <----------- remember to do this.
+```
+
+## MeshNormalMaterial
+Normals are information that contains the direction of the outside of the face. A sphere is pointing to all areas of direction. Us for lighting, reflection, refraction, and so on. So this is what does the animation. Share common properties `wireframe` `transparent` `opacity` and `side`.
 
 
 
+![image](https://user-images.githubusercontent.com/75579372/122653436-44860500-d0f9-11eb-8e5c-b6cfb3ae4909.png)
+
+![image](https://user-images.githubusercontent.com/75579372/122653440-4a7be600-d0f9-11eb-9b24-9b80f2367701.png)
 
 
+Also has `flatShading`. If set true will flatten the faces 
+
+![image](https://user-images.githubusercontent.com/75579372/122653471-82832900-d0f9-11eb-9b92-d49b6d1d358c.png)
+
+## DO YOU FIND IT THAT YOU CAN'T SEE A PLANE'S BACKSIDE???
+If so, you need to write in the `material`, `material.side = THREE.DoubleSide`. Try to avoid this because it is more calculations for the GPU. 
 
 
+## MeshMatCapMaterial
+Display color by using normals as a reference to pick the right color on a texture that looks like a sphere and puts it on the shape. 
+
+![image](https://user-images.githubusercontent.com/75579372/122653740-9891e900-d0fb-11eb-89c2-beff718ea631.png)
 
 
 
