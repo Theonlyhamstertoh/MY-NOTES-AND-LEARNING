@@ -586,4 +586,16 @@ Set the offset from the beginning position.
 ```texture.rotation = Math.PI / 3```
 ![image](https://user-images.githubusercontent.com/75579372/122626341-e0aefe00-d05e-11eb-9546-5c64da075253.png)
 
+The problem with this is that it is rotating at the bottom corner. If you want to do a rotation in the middle, you'll have to move the point. 
+
+![image](https://user-images.githubusercontent.com/75579372/122626409-4f8c5700-d05f-11eb-9c51-539afd720206.png)
+
+To rotate center: do 
+```
+colorTexture.center.x = 0.5;
+colorTexture.center.y = 0.5;
+```
+
+
+
 
