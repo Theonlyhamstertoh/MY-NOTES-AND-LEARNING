@@ -686,13 +686,41 @@ If so, you need to write in the `material`, `material.side = THREE.DoubleSide`. 
 
 
 ## MeshMatCapMaterial
-Display color by using normals as a reference to pick the right color on a texture that looks like a sphere and puts it on the shape. 
+Display color by using normals as a reference to pick the right color on a texture that looks like a sphere and puts it on the shape. You can create a sphere in blender, add light, and take a square render. You can also do it in photoshop. 
 
 ![image](https://user-images.githubusercontent.com/75579372/122653740-9891e900-d0fb-11eb-89c2-beff718ea631.png)
 
 
+## MeshDepthMaterial
+* Create depth effect. Can be used for fog. 
+
+![image](https://user-images.githubusercontent.com/75579372/122653833-48675680-d0fc-11eb-8194-a665a496877c.png)
+
+When up close
+
+![image](https://user-images.githubusercontent.com/75579372/122653836-4e5d3780-d0fc-11eb-8196-cb032754c957.png)
 
 
+## MeshLambertMaterial
+Reacts to light! Very basic.
+
+## MeshPhongMaterial
+A bit more adequate. Gets rid of the strange line pattern. And actually reflects!
+
+![image](https://user-images.githubusercontent.com/75579372/122653957-23bfae80-d0fd-11eb-978a-3f35b7b4f93e.png)
+
+```
+material.shininess = 100;
+material.specular = new THREE.Color("red")
+```
+![image](https://user-images.githubusercontent.com/75579372/122653984-510c5c80-d0fd-11eb-8891-78174c35218d.png)
+
+
+## MeshToonMaterial
+A cartoonish effect.
+
+
+![image](https://user-images.githubusercontent.com/75579372/122654034-78632980-d0fd-11eb-8153-17a5074497cb.png)
 
 
 
