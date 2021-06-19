@@ -607,7 +607,7 @@ Technique of creating half a smaller version of a texture again and again until 
 
 
 ### Minificiation Filter
-Happens when the pixel of texture are smaller than the pixel of the render. Can change the minification filter of texture. 
+Happens when the pixel of texture are smaller than the pixel of the render. Can change the minification filter of texture. If you use NearestFilter on mipmapping, you don't need it. You should then deactivate them `colorTexture.generateMipMaps = false`
  
  (From THREEJS DOC)
 **NearestFilter** returns the value of the texture element that is nearest (in Manhattan distance) to the specified texture coordinates.
@@ -623,10 +623,37 @@ Happens when the pixel of texture are smaller than the pixel of the render. Can 
 **LinearMipmapLinearFilter** is the default and chooses the two mipmaps that most closely match the size of the pixel being textured and uses the LinearFilter criterion to produce a texture value from each mipmap. The final texture value is a weighted average of those two values.
 
 ### Magnification Filter
-The exact opposite of the minificiation filter. Happens when the pixel of the texture are bigger than the pixel of the render. in Other words, texture is too small for the surface to cover it. It looks blurry when stretched. The user will probably won't notice it is being stretched. A solution however if you want to make it not blurry is to use `THREE.NearestFilter` Below is the images that change after using the filter.
+The exact opposite of the minificiation filter. Happens when the pixel of the texture are bigger than the pixel of the render. in Other words, texture is too small for the surface to cover it. It looks blurry when stretched. The user will probably won't notice it is being stretched. A solution however if you want to make it not blurry is to use `THREE.NearestFilter` Below is the images that change after using the filter. Using this is better performant friendly. 
 
 ![image](https://user-images.githubusercontent.com/75579372/122649648-9a4fb280-d0e3-11eb-8aa9-e47147d41330.png)
 ![image](https://user-images.githubusercontent.com/75579372/122649638-90c64a80-d0e3-11eb-9502-68c95a1e4aed.png)
+
+
+### Think of THREE THINGS in Textures
+* The Weight (keep it as light as possible by com
+  * JPG => lossy compression but lighter
+  * PNG => lossless compression but heavier
+* The Size or resolution
+  * Each pixel will be stored to the GPU regardless of weight. GPU has storage limitation. Even worse when mipmapping. Try to reduce size. 
+  * Always use texture of power of `2`. `512x512` `1024x1024` `512x2048`. Width and height don't have to be same. Just have to be the power of 2. 
+* The data
+  * Texture supports transparency but you cannot have transparency in `jpg`. Better use `png` if you want to comine color and alpha, use `png`. 
+  * Data is stored exactly in the file. Usually in `png` 
+
+# Material
+* Algorithms are written in programs called shaders
+* 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
