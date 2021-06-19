@@ -642,7 +642,29 @@ The exact opposite of the minificiation filter. Happens when the pixel of the te
 
 # Material
 * Algorithms are written in programs called shaders
-* 
+
+## MeshBasicMaterial
+```
+const torusMaterial = new THREE.MeshBasicMaterial({ color: debugObject.torusColor });
+
+OR
+
+const torusMaterial = new THREE.MeshBasicMaterial();
+torusMaterial.map = diamondBlock;
+```
+
+You however cannot do this with color. Once instantiated without color property, you have to add a Color class to make it work.
+```
+const torusMaterial = new THREE.MeshBasicMaterial();
+torusMaterial.color = "red". // ERROR
+
+torusMaterial.color = new THREE.Color("red")
+```
+
+If you want to have transparency: 
+```
+material.opacity = 0.5;
+material.transparent = true; <----------- remember to do this.
 
 
 
