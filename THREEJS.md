@@ -717,11 +717,22 @@ material.specular = new THREE.Color("red")
 
 
 ## MeshToonMaterial
-A cartoonish effect.
+A cartoonish effect. If you add a gradient, you have to remember that the image is blurred. You have to do on the below to make sure you can see the shadings.
+```
+doorGradient.magFilter = THREE.NearestFilter;
+doorGradient.minFilter = THREE.NearestFilter;
+doorGradient.generateMipmaps = false;
+````
 
 
 ![image](https://user-images.githubusercontent.com/75579372/122654034-78632980-d0fd-11eb-8153-17a5074497cb.png)
 
 
+## MeshStandardMaterial
+* The real serious one. The standard one and very important. You will use this a lot. 
+* Uses physicall based rendering principle
+* Supports lights with more realistic light algorithms
+* Supports roughness and metalness
 
-
+### aoMap 
+* Stands for Ambient Occlusion map. Will add shadows where the texture is dark. 
