@@ -805,14 +805,61 @@ const environmentMapTexture = cubeTextureLoader
 ```
 
 
+# TextBufferGeometry
+* Generates text as a geometry. You will need a specific font format called typeface. You have to convert fonts to typeface or use THREEJS Font. 
 
 
+```
+const fontLoader = new THREE.FontLoader();
+fontLoader.load("/fonts/helvetiker_regular.typeface.json", (font) => {
+  const textGeometry = new THREE.TextBufferGeometry("Hello Three.js", {
+    font,
+    size: 0.5,
+    height: 0.2, // depth of the font
+    curveSegments: 4,
+    bevelEnabled: true,
+    bevelThickness: 0.03,
+    bevelSize: 0.02,
+    bevelOffset: 0,
+    bevelSegments: 4,
+  });
+  
+
+  
+  const textMaterial = new THREE.MeshNormalMaterial();
+  const text = new THREE.Mesh(textGeometry, textMaterial);
+  scene.add(text);
+});
+
+```
+
+1. Create font folder
+2. Take the fonts from THREE into the font folder
+3. Load them with `new THREE.FontLoader()`
+
+With Fonts, you have to use callback. It's a callback function. You have to remember to optimize the font. The round ones have a ton of triangles and that can slow down performances.
+
+## How to center font
+Bounding as information associated with the geometry that tells what space has been taken by that geometry. Can be box or sphere. THREEJS use this to calculate if the object on the screen (called frustum culling). We can use this to recenter geometry. If object is behind camera, they won't rerender the things behind. BY default, THREEJS is using sphere bounding. The `min` property isn't 0 because of the bezel
+	
+![image](https://user-images.githubusercontent.com/75579372/122689584-9fdaf480-d1d8-11eb-8f96-1cdcd11d737d.png)
 
 
-
-
-
-
+```
+  textGeometry.computeBoundingBox(); <-- compute the bounding box and move the points 50% back and you subtract the bevelThickness and bevelSize to get 0.
+  textGeometry.translate(
+    -(textGeometry.boundingBox.max.x - 0.02) * 0.5,
+    -(textGeometry.boundingBox.max.y - 0.02) * 0.5,
+    -(textGeometry.boundingBox.max.z - 0.03) * 0.5
+  );
+  ```
+  
+  ## BUT THERE IS A MUCH SIMPLER WAY.
+  Just use `textGeometry.center()`. It's actually the above. 
+  
+  ```console.time("donuts") .... then later..... console.timeEnd("donuts") will show you the time lapse.```
+  # You Should always optimize 
+  Instead of creating 1000 new geometries and materials again and again, you can reuse the geometry. The time to create will go from 231ms to 15ms. When you have the same material, reuse them!
 
 
 
