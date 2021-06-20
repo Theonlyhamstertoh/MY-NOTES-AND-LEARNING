@@ -668,7 +668,12 @@ material.transparent = true; <----------- remember to do this.
 ```
 
 ## MeshNormalMaterial
-Normals are information that contains the direction of the outside of the face. A sphere is pointing to all areas of direction. Us for lighting, reflection, refraction, and so on. So this is what does the animation. Share common properties `wireframe` `transparent` `opacity` and `side`.
+Normals are information that contains the direction of the outside of the face. A sphere is pointing to all areas of direction. Us for lighting, reflection, refraction, and so on. So this is what does the animation. Share common properties `wireframe` `transparent` `opacity` and `side`. It shows the direction of the particular vertices of where it is pointing. 
+Pink = right
+Aqua = left
+light green = up
+purple = down
+lavender = towards screen
 
 
 
