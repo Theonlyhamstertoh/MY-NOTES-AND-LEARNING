@@ -785,6 +785,19 @@ Can both be used to create your own material.
 ![image](https://user-images.githubusercontent.com/75579372/122657925-79578380-d11c-11eb-894f-2f67670326ed.png)
 
 
+```
+const cubeTextureLoader = new THREE.CubeTextureLoader();
+
+const environmentMapTexture = cubeTextureLoader
+  .load( [
+		'px.png',
+		'nx.png',
+		'py.png',
+		'ny.png',
+		'pz.png',
+		'nz.png'
+	] );
+```
 
 
 
