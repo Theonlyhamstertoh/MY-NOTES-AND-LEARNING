@@ -858,7 +858,143 @@ Bounding as information associated with the geometry that tells what space has b
   Just use `textGeometry.center()`. It's actually the above. 
   
   ```console.time("donuts") .... then later..... console.timeEnd("donuts") will show you the time lapse.```
-  # You Should always optimize 
+
+
+# LIGHTS !!!!!!!
+
+## AmbientLight
+* Illuminates all objects in the scene equally. Cannot be used to cast shadows because it doesn't have direction. It is good to simulate light bouncing.
+
+```
+const light = new THREE.AmbientLight( 0x404040 ); // soft white light
+scene.add( light );
+```
+
+![image](https://user-images.githubusercontent.com/75579372/122692654-429c6e80-d1eb-11eb-97b1-32c4c66fa6f6.png)
+
+
+This is what happens if you don't include the AmbientLight. We don't simulate light bouncing. So include it to simulate it.
+
+![image](https://user-images.githubusercontent.com/75579372/122692801-f1d94580-d1eb-11eb-9022-cee1591069cf.png)
+
+If you now use AmbientLight and the same color as the pointLIght or directional light, you can simulate the color. 
+
+![image](https://user-images.githubusercontent.com/75579372/122692861-277e2e80-d1ec-11eb-8031-32d20b70e561.png)
+
+
+## DirectionalLight
+* Emits light in a specific direction. Behave as though it is infinitely far away and the rays produced are all parallel. Common use case to simulate `daylight` and `sun`. 
+
+## HemisphereLight
+* A light source positioned directly above scene with color fading from sky color to ground. Used for sky. 
+
+## PointLight
+* Light that gets emitted from a single point in all direction. Used to replicate a lightbulb.
+
+```
+const light = new THREE.PointLight( 0xff0000, 1, 100 );
+light.position.set( 50, 50, 50 );
+scene.add( light );
+```
+
+
+## Spotlight
+Light emitted from single point and increase along code. A spotlight. 
+
+```
+
+const spotLight = new THREE.SpotLight( 0xffffff );
+spotLight.position.set( 100, 1000, 100 );
+
+spotLight.castShadow = true;
+
+spotLight.shadow.mapSize.width = 1024;
+spotLight.shadow.mapSize.height = 1024;
+
+spotLight.shadow.camera.near = 500;
+spotLight.shadow.camera.far = 4000;
+spotLight.shadow.camera.fov = 30;
+
+scene.add( spotLight );
+```
+
+![image](https://user-images.githubusercontent.com/75579372/122692488-3532b480-d1ea-11eb-873a-ccb8994fcd1c.png)
+
+## RectAreaLight
+* Emits light uniformly across the face of rectangular plane. Used to simulate strip LED lights or bright windows! No shadow support. You must have `RectAreaLightUnicofrmsLib` and only `MeshStandardMaterial` and `MeshPhysicalMaterial` supoprts. 
+
+```const width = 10;
+const height = 10;
+const intensity = 1;
+const rectLight = new THREE.RectAreaLight( 0xffffff, intensity,  width, height );
+rectLight.position.set( 5, 5, 0 );
+rectLight.lookAt( 0, 0, 0 );
+scene.add( rectLight )
+
+const rectLightHelper = new THREE.RectAreaLightHelper( rectLight );
+rectLight.add( rectLightHelper );
+```
+
+
+
+![image](https://user-images.githubusercontent.com/75579372/122692509-5a272780-d1ea-11eb-89ce-30be4c8a3a2b.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# You Should always optimize 
   Instead of creating 1000 new geometries and materials again and again, you can reuse the geometry. The time to create will go from 231ms to 15ms. When you have the same material, reuse them!
 
 
