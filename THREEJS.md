@@ -1022,6 +1022,14 @@ function animate() {  spotLightHelper.update(); } <-- if you move the target, yo
 ```
 
 
+### RECTAREALIGHTHELPER
+```
+import { RectAreaLightHelper } from "three/examples/jsm/helpers/RectAreaLightHelper";
+
+const light = new THREE.RectAreaLight( 0xffffbb, 1.0, 5, 5 );
+const helper = new RectAreaLightHelper( light );
+light.add( helper ); // helper must be added as a child of the light
+```
 
 
 
