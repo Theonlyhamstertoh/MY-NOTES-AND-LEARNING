@@ -862,6 +862,10 @@ Bounding as information associated with the geometry that tells what space has b
 
 # LIGHTS !!!!!!!
 
+minimal cost - `ambient` `hemisphere`
+moderate - `directionalLight` `pointLight`
+high - `spotlight` `rectArealight`
+
 ## AmbientLight
 * Illuminates all objects in the scene equally. Cannot be used to cast shadows because it doesn't have direction. It is good to simulate light bouncing.
 
@@ -885,17 +889,31 @@ If you now use AmbientLight and the same color as the pointLIght or directional 
 ## DirectionalLight
 * Emits light in a specific direction. Behave as though it is infinitely far away and the rays produced are all parallel. Common use case to simulate `daylight` and `sun`. 
 
+![image](https://user-images.githubusercontent.com/75579372/122692944-83e14e00-d1ec-11eb-8436-f41f39972a1b.png)
+
+
 ## HemisphereLight
 * A light source positioned directly above scene with color fading from sky color to ground. Used for sky. 
+`HemisphereLight( skyColor : Integer, groundColor : Integer, intensity : Float )`
 
 ## PointLight
-* Light that gets emitted from a single point in all direction. Used to replicate a lightbulb.
+* Light that gets emitted from a single point in all direction. LIke a light bulb.
 
 ```
 const light = new THREE.PointLight( 0xff0000, 1, 100 );
 light.position.set( 50, 50, 50 );
 scene.add( light );
 ```
+![image](https://user-images.githubusercontent.com/75579372/122693349-52698200-d1ee-11eb-91c2-7be651a5d0e4.png)
+
+![image](https://user-images.githubusercontent.com/75579372/122693224-cc4d3b80-d1ed-11eb-92f7-fbe3df9cd838.png)
+![image](https://user-images.githubusercontent.com/75579372/122693234-d7a06700-d1ed-11eb-9745-094392d6fc53.png)
+![image](https://user-images.githubusercontent.com/75579372/122693240-dd964800-d1ed-11eb-80b3-28daf36cd547.png)
+
+
+`Distance`. A smaller distance means the light won't reach far. A longer distance will make it reach far. Think about the minecraft torch. Set it to `2` for decay for physically accucrate rendering.
+![image](https://user-images.githubusercontent.com/75579372/122693684-b2145d00-d1ef-11eb-8e8a-7bd443f57eca.png)
+
 
 
 ## Spotlight
@@ -920,6 +938,10 @@ scene.add( spotLight );
 
 ![image](https://user-images.githubusercontent.com/75579372/122692488-3532b480-d1ea-11eb-873a-ccb8994fcd1c.png)
 
+Light can cost a lot in performances. Try to add as few lights as possible. Cost the GPU. 
+
+
+
 ## RectAreaLight
 * Emits light uniformly across the face of rectangular plane. Used to simulate strip LED lights or bright windows! No shadow support. You must have `RectAreaLightUnicofrmsLib` and only `MeshStandardMaterial` and `MeshPhysicalMaterial` supoprts. 
 
@@ -935,13 +957,69 @@ const rectLightHelper = new THREE.RectAreaLightHelper( rectLight );
 rectLight.add( rectLightHelper );
 ```
 
+You can move the light to `lookAt(...)` to see it
 
 
 ![image](https://user-images.githubusercontent.com/75579372/122692509-5a272780-d1ea-11eb-89ce-30be4c8a3a2b.png)
 
+## Penumbra 
+`0.25`
+![image](https://user-images.githubusercontent.com/75579372/122694482-513a5400-d1f2-11eb-8a9d-42f8828754da.png)
+
+`0`
+![image](https://user-images.githubusercontent.com/75579372/122694496-5bf4e900-d1f2-11eb-9de3-2849a0eda479.png)
+
+## Rotating 
+It's not looking at vector3D. It's looking at a Object3D. You will have to change the `spotLight.target.position` and `spotlight.target` to change position. You need to do something thing. 
+
+You have to add `spotlight.target` to the `scene`. 
 
 
+## IF you want A LOT OF LIGHTS. THINK ABOUT `BAKING`
+The idea of `Baking` is to bake the light into the texture. This can be done in Blender. Drawback is you cannot move light anymore and have to load huge textures. If the light moves, then the texture won't be updated. 
 
+![image](https://user-images.githubusercontent.com/75579372/122694852-a0cd4f80-d1f3-11eb-8436-8fb4561461c7.png)
+
+NO THREEJS LIGHT AT ALL!!!!!!!!!!!
+
+![image](https://user-images.githubusercontent.com/75579372/122694866-ab87e480-d1f3-11eb-9217-9ab0bd71efbb.png)
+
+## LIGHT HELPERS
+It can be really hard to position light when you can't see it. Helpers will help you 
+
+### HEMI LIGHT HELPER
+```
+const hemisphereLightHelper = new THREE.HemisphereLightHelper(hemiSphereLight, 0.2);
+scene.add(hemisphereLightHelper);
+```
+Mathces the color! Red on top. Blue on bottom. 
+
+![image](https://user-images.githubusercontent.com/75579372/122695037-2bae4a00-d1f4-11eb-8517-9c2e3fcfc6ca.png)
+
+### DIRECTIONAL LIGHT HELPER
+```
+const directionalLightHelper = new THREE.DirectionalLightHelper(directionalLight, 0.2);
+scene.add(directionalLightHelper);
+```
+![image](https://user-images.githubusercontent.com/75579372/122695143-6ca65e80-d1f4-11eb-9666-d6387984e724.png)
+
+
+### POINTLIGHTHELPER
+```
+const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.2);
+scene.add(pointLightHelper);
+```
+
+![image](https://user-images.githubusercontent.com/75579372/122695216-a24b4780-d1f4-11eb-82e6-7fdc83fce130.png)
+
+### SPOTLIGHT HELPER
+```
+const spotLightHelper = new THREE.SpotLightHelper(spotLight);
+scene.add(spotLightHelper);
+
+
+function animate() {  spotLightHelper.update(); } <-- if you move the target, you have to update it on the next frame after moving.
+```
 
 
 
