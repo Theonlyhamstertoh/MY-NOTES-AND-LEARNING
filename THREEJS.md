@@ -1053,7 +1053,13 @@ First, enable `castShadow = true` on the lights so they can cast shadows. Then, 
 
 ![image](https://user-images.githubusercontent.com/75579372/122949601-a5e3e900-d330-11eb-8ff6-dda09cf5d6f8.png)
 
-So, shadows don't look to good and requires a lot of work. If you have mutiple, it just looks off. One solution is to do `Baking Shadows`. 
+### Baked Shadow
+So, shadows don't look to good and requires a lot of work. If you have mutiple, it just looks off. One solution is to do `Baking Shadows`. But it's not really dynamic. You use textures basically and put it as a map on the plane.
+
+![image](https://user-images.githubusercontent.com/75579372/122961502-4e964680-d339-11eb-8143-5b9b8656a85a.png)
+
+
+### Alternative to Baked shadow 
 
 ## Optimizing Shadows
 * The `shadow maps` have their own width and height. To access the shadow map, you do `directionalLight.shadow` 
@@ -1118,6 +1124,13 @@ Uses a `PerspectiveCamera` but a `pointLight` points in all direction so you can
 IT's a lot of renderers. This is why you should avoid shadows as necessary. 
 
 **YOU CANNOT CONTROL THE FOV. ONLY CHANGE THE MAPSIZE AND NEAR OR FAR**
+
+## Making a ball bounce up and down in circle
+```
+sphere.position.x = Math.cos(elapsedTime) * 1.5;
+sphere.position.z = Math.sin(elapsedTime) * 1.5;
+sphere.position.y = Math.abs(Math.sin(elapsedTime * 3));
+```
 
 
 
