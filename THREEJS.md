@@ -1053,6 +1053,7 @@ First, enable `castShadow = true` on the lights so they can cast shadows. Then, 
 
 ![image](https://user-images.githubusercontent.com/75579372/122949601-a5e3e900-d330-11eb-8ff6-dda09cf5d6f8.png)
 
+So, shadows don't look to good and requires a lot of work. If you have mutiple, it just looks off. One solution is to do `Baking Shadows`. 
 
 ## Optimizing Shadows
 * The `shadow maps` have their own width and height. To access the shadow map, you do `directionalLight.shadow` 
@@ -1078,12 +1079,45 @@ directionalLight.shadow.camera.near = 1;
 directionalLight.shadow.camera.far = 6;
 ```
 
+### Reducing Amplitude
+* By reducing the amplitude, it results in a better shadow generated. When you have a huge camera width and height, you have a really small circle and to produce good details on that small circle is much more difficult. But when you reduce the size of the camera, the circle becomes really big and it can capture the details a whole lot better. `However, if the camera values are too far (such as the `far` is too short), it will crop the shadows. 
+
+![image](https://user-images.githubusercontent.com/75579372/122953215-65d23580-d333-11eb-9e85-d5a5f48bf0c0.png)
 
 
+To reduce amplitude, do this for `directionalLight orthographic camera`:
+```
+directionalLight.shadow.camera.left = -2;
+directionalLight.shadow.camera.right = 2;
+directionalLight.shadow.camera.top = 2;
+directionalLight.shadow.camera.bottom = -2;
+```
 
 
+### Blurring
+`directionalLight.shadow.radius = 10;`
 
+## Shadow Map Algorithms
+* `THREE.BasicShadowMap` = very performant but lousy quality
+* `THREE.PCFShadowMap` = less performant but smoother edges (default)
+* `THREE.PCFSoftShadowMap` = less performant but even softer edges
+* `THREE.VSMShadowMap` = less Performant, more constraints, can have unexpected results. m
 
+To use a different type: `renderer.shadowMap.type = THREE.PCSoftShadowMap`
+
+### `THREE.PCSoftShadowMap`
+`radius` does not work with `THREE.PCSoftShadowMap`. 
+
+## Spotlight Shadow
+Mixing shadows doesn't look good and currently there is not much to do about it. For a `PerpspectiveCamera`, you change the `FOV` to get higher quality. 
+`spotLight.shadow.camera.fov = 30`
+
+## PointLight Shadow
+Uses a `PerspectiveCamera` but a `pointLight` points in all direction so you can have shadows in every directions. What THREE.JS will do is create 6 shadowMaps and do 6 renderers in 6 directions. It's like creating a cube env map. The camera is looking downwards because the last step was looking down. So you get a perpsective camera looking down. 
+
+IT's a lot of renderers. This is why you should avoid shadows as necessary. 
+
+**YOU CANNOT CONTROL THE FOV. ONLY CHANGE THE MAPSIZE AND NEAR OR FAR**
 
 
 
