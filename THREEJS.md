@@ -1033,10 +1033,15 @@ light.add( helper ); // helper must be added as a child of the light
 
 
 
+# Shadows
+* The shadow on the objects are called `core shadows`. But what we want are `drop shadows`. The shadows on the plane and not just on the object. 
+* When you do one render, it will render for each light supporting shadows to simulate what the light sees as if it was a camera. 
+* During lights render, a `MeshDepthMaterial` replaces all meshes materials. 
+* Lights are then stored in textures and called `shadow maps`. Then used on every material and to receive shadow and projected on the geometry. 
+* If you have 100 cameras, you will have 100 shadow maps. Once you have all the shadow maps, it will take them and use them to color our meshes. It will then generate the shadows. 
 
 
-
-
+![image](https://user-images.githubusercontent.com/75579372/122947873-56e98400-d32f-11eb-9bec-c94408895250.png)
 
 
 
