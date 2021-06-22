@@ -1039,16 +1039,44 @@ light.add( helper ); // helper must be added as a child of the light
 * During lights render, a `MeshDepthMaterial` replaces all meshes materials. 
 * Lights are then stored in textures and called `shadow maps`. Then used on every material and to receive shadow and projected on the geometry. 
 * If you have 100 cameras, you will have 100 shadow maps. Once you have all the shadow maps, it will take them and use them to color our meshes. It will then generate the shadows. 
-
+* **ONLY** `Directional Light`, `PointLight`, and `Spotlight` supports shadows. 
 
 ![image](https://user-images.githubusercontent.com/75579372/122947873-56e98400-d32f-11eb-9bec-c94408895250.png)
 
 
+## To use Shadows
+`renderer.shadowMap.enabled = true;`
+
+You have to manually enable shadow. 
+
+First, enable `castShadow = true` on the lights so they can cast shadows. Then, you need to `castShadow` on the objects of `receiveShadow` on the objects. By default they are false. Remember to also enable `shadowMapping` on the renderer to get it to create shadowMaps.  
+
+![image](https://user-images.githubusercontent.com/75579372/122949601-a5e3e900-d330-11eb-8ff6-dda09cf5d6f8.png)
 
 
+## Optimizing Shadows
+* The `shadow maps` have their own width and height. To access the shadow map, you do `directionalLight.shadow` 
+* By default, the shadow map size is only `512x512`. You can make it better by doing a `power of 2` on for the mapSize to get a higher qualty. This is for the mipmapping. 
 
+For each camera, increase width and height
+```
+directionalLight.shadow.mapSize.width = 1024 * 4;
+directionalLight.shadow.mapSize.height = 1024 * 4;
+```
 
+### Controlling near and far on the camera
+Make the light shadow map to only fit the scene because it is shooting too far. It will improve precision. 
 
+* A directionLight with parallel rays and coming from everywhere and straight. So that's why it uses 
+* To help you debug, get a `cameraHelper` 
+
+What is the difference between a `cameraHelper` and a `lightHelper`? Well, with a lightHelper, all you can see is the direction of where the light is pointing at. But remember, a cameraHelper allows you to see the camera width and height. Since there is a orthographic camera in the `Shadow` property of the `Directional Light`, you can use the `CameraHelper` to position the near and far and allow for greater precision
+
+This is important to help you avoid bugs. Now, position the camera:
+```
+directionalLight.shadow.camera.near = 1;
+directionalLight.shadow.camera.far = 6;
+```
 
 
 
