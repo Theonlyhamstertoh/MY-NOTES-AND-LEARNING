@@ -24,3 +24,15 @@ The parts of the screen.
 * Always an alternative through the interface.
 * If you want to be productive, you have to learn them.
 * Shortcuts are *area* sensitive. If your `mouse` is in the 3D viewport, it will do shortcuts only for the 3D viewport. *Make sure they are in the right area* 
+* Mode sensitive
+
+## Truck (up and down left and right) By holding `shift` + `wheel` 
+![image](https://user-images.githubusercontent.com/75579372/123140201-de0c2a00-d40b-11eb-8608-de800abe779f.png)
+
+## Forward and backward without viewport limit
+`ctrl` + `shift`+ `wheel`
+
+## Dolly (forward and backward)
+rotate the wheel.
+
+## Fly Mode : `shift + ``
