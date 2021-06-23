@@ -35,4 +35,4 @@ The parts of the screen.
 ## Dolly (forward and backward)
 rotate the wheel.
 
-## Fly Mode : `shift + ``
+## Fly Mode : `shift + back quote` 
