@@ -32,7 +32,9 @@ The parts of the screen.
 ## Forward and backward without viewport limit
 `ctrl` + `shift`+ `wheel`
 
-## Dolly (forward and backward)
-rotate the wheel.
-
-## Fly Mode : `shift + back quote` 
+### Dolly (forward and backward) rotate wheel
+### Fly Mode : `shift + f` 
+### orthographic camera: `numpad 5`
+### `numpad 1` -y (press ctrl to go opposite direction)
+### `numpad 3` x (press ctrl to go opposite direction)
+### `numpad 7` z (press ctrl to go opposite direction)
