@@ -1133,8 +1133,22 @@ sphere.position.y = Math.abs(Math.sin(elapsedTime * 3));
 ```
 
 
+# Particles
+* Can create stars, smoke, rain, dust, fire, etc. 
+* Can have thousands and thouands of them with a reasonable frame rate
 
+## To Create a Particle
+It's like creating a mesh. a `geometry` and a `pointsmaterial` and a `Points` instead of Mesh
 
+```
+const particlesGeometry = new THREE.SphereBufferGeometry(1, 32, 32);
+const particlesMaterial = new THREE.PointsMaterial({
+	size: 0.2,
+	sizeAttenuation: true,
+});
+```
+`size`: size of particle
+`sizeAttenuation: true`: creates perspective. if close, big. If far, small.
 
 
 
