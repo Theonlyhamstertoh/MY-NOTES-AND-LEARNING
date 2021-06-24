@@ -384,19 +384,14 @@ You need more if you want to do complex design such as a mountain. With more tri
 
 ## To Create a Geometry without any built in: 
 ```
-const geometry = new THREE.Geometry();
+const geometry = new THREE.BufferGeometry();
+const count = 500;
+const positions = new Float32Array(count * 3);
+for (let i = 0; i < count * 3; i++) {
+  positions[i] = (Math.random - 0.5) * 10;
+}
+geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
 
-// creates the vertices
-const vertex1 = new THREE.Vector3(0, 0, 0);
-const vertex2 = new THREE.Vector3(0, 3, 0);
-const vertex3 = new THREE.Vector3(1, 0, 0);
-geometry.vertices.push(vertex1);
-geometry.vertices.push(vertex2);
-geometry.vertices.push(vertex3);
-
-// create face. You put 0, 1, 2 because they are the index inside the vertices array.
-const face = new THREE.Face3(0, 1, 2);
-geometry.faces.push(face);
 ```
 ## BUFFER GEOMETRIES
 Are much more efficient and optimized but less developer-friendly. You have to use them for performance reasoning. You will have to write a lot more code. When they are simple geometries, just use them! Get into the of using them. 
@@ -1152,6 +1147,64 @@ const particlesMaterial = new THREE.PointsMaterial({
 
 
 
+If you want particles everywhere, do: 
+```
+const textureLoader = new THREE.TextureLoader();
+const particleTexture = textureLoader.load("textures/particles/2.png");
+const particlesGeometry = new THREE.BufferGeometry(1, 32, 32);
+const particlesMaterial = new THREE.PointsMaterial({
+  size: 0.2,
+  sizeAttenuation: true,
+  color: "red",
+  transparent: true,
+  alphaMap: particleTexture,
+});
+
+const count = 5000;
+const positions = new Float32Array(count * 3);
+for (let i = 0; i < count * 3; i++) {
+  positions[i] = (Math.random() - 0.5) * 10;
+}
+particlesGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+// Points
+const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+
+scene.add(particles);
+```
+What is really cool about this is how you can use any texture you want on the particles. So just get any image and put them on! The problem is that with particles, there comes the edges. You should use alphaMap instead to get rid of them. THis however still doesn't work too well. That is because particles are drawn in t he same order as they are created and webGL dosen't know which one is in front. There are multiple ways to fix this: 
+
+1. `alphaTest: 0.001`. By default, it is rendering `0` which is black. We don't want it to render. So we put 0.001;
+2. `depthTest: false`. This will draw everything even if it is in front of not. THIS WILL `CREATE BUGS`. 
+3. `depthWrite: false` Store the greyscale texture of what has been drawn. It will check if it is in front or not. 
+
+`blending: THREE.AdditiveBlending` Add to the color of the one before. You get the feeling of glowing! **can impact performances**
+![image](https://user-images.githubusercontent.com/75579372/123181861-09f6d200-d443-11eb-9c5a-63780ed85d2f.png)
+
+## To color the particles
+```
+const colors = new Float32Array(count * 3);
+const positions = new Float32Array(count * 3);
+for (let i = 0; i < count * 3; i++) {
+  positions[i] = (Math.random() - 0.5) * 10;
+  colors[i] = Math.random();
+}
+particlesGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+particlesMaterial.vertexColors = true;
+```
+Watch out for any `color`. It will blend. 
+
+## Animating Particles
+Because the point inherits from object3D, you can simply animate like any other objects. 
+
+```
+for (let i = 0; i < count: i++) {
+	const i3 = i * 3;
+	i3 === x
+	i3[1] === 2
+}
+```
+WHEN A GEOMETRY ATTRIBUTE CHANGE, YOU HAVE TO WRITE `NEEDSUPDATE: TRUE` to do update. 
 
 
 
