@@ -1208,7 +1208,23 @@ WHEN A GEOMETRY ATTRIBUTE CHANGE, YOU HAVE TO WRITE `NEEDSUPDATE: TRUE` to do up
 
 
 
+``` onFinishedChange(generateGalaxy)``` will only run when the dat.gui is stopped. So when you move back and forth, it will work. The problem with this is that it is generating new galaxies but you have to remove them. 
 
+# Disposing
+If you want to dispose the previous points or geometries, you should do: 
+```
+let points = null;
+let particleGeometry = null;
+let particleMaterials = null;
+function generateGalaxy() {
+  if (points !== null) {
+    particleMaterials.dispose();
+    particleGeometry.dispose();
+    scene.remove(points);
+  }
+  ...
+}
+```
 
 
 
