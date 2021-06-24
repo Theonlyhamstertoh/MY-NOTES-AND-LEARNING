@@ -1227,6 +1227,101 @@ function generateGalaxy() {
 ```
 
 
+## Mixing Colors
+The `lerp(otherColor, how much to lerp (ex. 0.5, perfect mix))` that takes the base colors and interpolate the values with another value to mix them. 
+* But watch out! You can't just mix color like `color1.lerp()`. This will overwrite `color1`! Make sure to clone the colors
+
+```
+const mixedColor = colorInside.clone();
+mixedColor.lerp(colorOutside, radius / particleObject.radius);
+```
+
+Galaxy Generator
+```
+  /**
+   * Particles
+   */
+  particleGeometry = new THREE.BufferGeometry();
+  const positions = new Float32Array(particleObject.count * 3);
+  const colors = new Float32Array(particleObject.count * 3);
+
+  const colorInside = new THREE.Color(particleObject.insideColor);
+  const colorOutside = new THREE.Color(particleObject.outsideColor);
+
+  for (let i = 0; i < particleObject.count; i++) {
+    const i3 = i * 3;
+
+    const branchAngle = ((i % particleObject.branch) / particleObject.branch) * Math.PI * 2;
+    const radius = Math.random() * particleObject.radius;
+
+    const mixedColor = colorInside.clone();
+    mixedColor.lerp(colorOutside, radius / particleObject.radius);
+
+    const spinAngle = radius * particleObject.spin;
+    const randomX =
+      Math.pow(Math.random(), particleObject.randomnessPower) * (Math.random() < 0.5 ? 1 : -1);
+    const randomY =
+      Math.pow(Math.random(), particleObject.randomnessPower) * (Math.random() < 0.5 ? 1 : -1);
+    const randomZ =
+      Math.pow(Math.random(), particleObject.randomnessPower) * (Math.random() < 0.5 ? 1 : -1);
+
+    positions[i3 + 0] = Math.cos(branchAngle + spinAngle) * radius + randomX;
+    positions[i3 + 1] = randomY;
+    positions[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius + randomZ;
+
+    colors[i3] = mixedColor.r;
+    colors[i3 + 1] = mixedColor.g;
+    colors[i3 + 2] = mixedColor.b;
+  }
+
+  particleGeometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+  particleGeometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+
+  /**
+   * Materials
+   */
+  particleMaterials = new THREE.PointsMaterial({
+    size: particleObject.size,
+    blending: THREE.AdditiveBlending,
+    // sizeAttenuation: true,
+    // alphaMap: texture,
+    vertexColors: true,
+    depthWrite: false,
+    // color: particleObject.color,
+    // transparent: true,
+  });
+
+  points = new THREE.Points(particleGeometry, particleMaterials);
+
+  scene.add(points);
+}
+generateGalaxy();
+
+/**
+ * Dat.GUI
+ */
+const gui = new dat.GUI();
+gui.add(particleObject, "count").min(100).max(1000000).step(100).onFinishChange(generateGalaxy);
+gui.add(particleObject, "size").min(0.01).max(1).step(0.01).onFinishChange(generateGalaxy);
+gui.add(particleObject, "radius").min(0.01).max(20).step(0.01).onFinishChange(generateGalaxy);
+gui.add(particleObject, "branch").min(1).max(10).step(1).onFinishChange(generateGalaxy);
+gui.add(particleObject, "spin").min(-5).max(5).step(0.001).onFinishChange(generateGalaxy);
+gui.add(particleObject, "randomness").min(0).max(2).step(0.001).onFinishChange(generateGalaxy);
+gui
+  .add(particleObject, "randomnessPower")
+  .min(1)
+  .max(10)
+  .step(0.001)
+  .onFinishChange(generateGalaxy);
+gui
+  .add(particleObject, "angle")
+  .min(0)
+  .max(Math.PI * 2)
+  .step(Math.PI / 2)
+  .onFinishChange(generateGalaxy);
+gui.addColor(particleObject, "insideColor").onFinishChange(generateGalaxy);
+gui.addColor(particleObject, "outsideColor").onFinishChange(generateGalaxy);
+```
 
 
 
@@ -1239,13 +1334,12 @@ function generateGalaxy() {
 
 
 
-
-
-
-
-# You Should always optimize 
+# Tips
+## You Should always optimize 
   Instead of creating 1000 new geometries and materials again and again, you can reuse the geometry. The time to create will go from 231ms to 15ms. When you have the same material, reuse them!
 
+## Start creating the tweaks!
+If you do it only at the end, you will feel too overwhelmed to add it. If you do, you can open a lot of opportunity to exploring!
 
 
 
