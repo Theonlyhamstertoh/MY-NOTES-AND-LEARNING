@@ -1325,10 +1325,13 @@ gui.addColor(particleObject, "outsideColor").onFinishChange(generateGalaxy);
 
 
 
+How does `const branchAngle = ((i % particleObject.branch) / particleObject.branch) * Math.PI * 2;` work?
+* essentially, what you really are doing here is creating a predefined sets of value the angle can be. If branch is `3`, then the only optiosn `i % branch` will get you is `1/3` `0/3` `2/3`. And when you multiply them against `2pi` you will get the corresponding angle. it's basically saying, get me `angle of 120 out of the full circle`. 
 
 
-
-
+How does `const spinAngle = radius * particleObject.spin;` work?
+* Remember that the `radius` is actually `Math.random() * radius`. That means if the radius was 20, the value can be anywhere from `0-20`. That radius only defines the highest max value. It is also the radius that determine how far away your point is. `Math.cos(value)` and `Math.sin(value)` will never have a value bigger than `1` or `-1`. The radius vlaue multiplies it to create the distance. That means, if the `radius` is small, the point will be much closer to the origin. If then you do `radius * spin`, it is a very miniscule spin. Something like `2 * 3 = 6`. While, if the radius was `20`. You get `20 * 3 = 60`. See how much spinAngle has increased? This is in proportion to the radius so that's how you get the spin. 
+* Secondly, you do `Math.cos(branchAngle + spinAngle)` to offset the current position by that much. That's how it works. 
 
 
 
