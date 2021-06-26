@@ -1,6 +1,8 @@
-# 1. Created a galaxy generator
+# 1. Created a galaxy generator (6/24)
 ![image](https://user-images.githubusercontent.com/75579372/123496930-96d69280-d5df-11eb-94e0-33de8743bf80.png)
-# 2. Created a forest and table in blender. (picture below is playing with cubes)
+# 2. Created a forest and table in blender. (picture below is playing with cubes) (6/25)
 ![image](https://user-images.githubusercontent.com/75579372/123496911-67278a80-d5df-11eb-8525-b5eb5b7b4717.png)
-# 3. Created a rotating sphere with debug controls using Leva. Play with Text
+# 3. Created a rotating sphere with debug controls using Leva. Play with Text (6/25)
 ![image](https://user-images.githubusercontent.com/75579372/123501759-12463d00-d5fc-11eb-8649-6a1030e610c7.png)
+# 4. Made myself a carrot (6/26)
+![image](https://user-images.githubusercontent.com/75579372/123522759-40fffa00-d674-11eb-8403-d41d35f2fff6.png)
