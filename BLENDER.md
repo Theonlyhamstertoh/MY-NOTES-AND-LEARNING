@@ -106,7 +106,11 @@ Show render properties, environmetnal properties, and active object properties.
 * but not very performant
 
 
+## When joining
+Make sure you have about the same modifier or else you can have problems
+
 ## Pro tips
 * always scale on edit mode so it won't effect the UV unwrapping. Always keep cube scale to 1. 
+* Always have a reference image or model so you know how it will look
 
 `blend1` is a backup file. 
