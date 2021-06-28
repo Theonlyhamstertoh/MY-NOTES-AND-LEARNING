@@ -1334,9 +1334,108 @@ How does `const spinAngle = radius * particleObject.spin;` work?
 * Secondly, you do `Math.cos(branchAngle + spinAngle)` to offset the current position by that much. That's how it works. 
 
 
+# RayCaster
+* Cast a ray in a specific direction and test what objects intersects with it. 
+* Can find out if there is a wall in front of the player. If too close, you can prevent player from moving forward
+* Can test if the laser gun hits the enemy
+* Test if the cursor is touching anything
+* Shoots a line to see if it collides with anything and then provide useful information.
+* Can show alert message if the spaceship is heading towards a planet. 
 
 
+![image](https://user-images.githubusercontent.com/75579372/123692889-337d7800-d80c-11eb-84a9-1fc9fa1c7ef7.png)
 
+# Using Raycaster
+* If you want to shoot a ray in a direction, you need to specify the `origin` and `direction` of the array.
+* Direction has to be normalized. It's when your vector3 length is `1`. Always normalize
+
+```
+const raycaster = new THREE.Raycaster();
+const rayOrigin = new THREE.Vector3(-4, 0, 0);
+const rayDirection = new THREE.Vector3(10, 0, 0);
+rayDirection.normalize(); // reduce the length to 1 but keep the direction.
+raycaster.set(rayOrigin, rayDirection);
+```
+
+```
+const intersect = raycast.intersectObject(object1); // returns a array because one intersect object can be gone through several times. 
+const intersect = raycast.intersectObjects([object1, object2, object3]);
+```
+
+![image](https://user-images.githubusercontent.com/75579372/123707837-36ce2f00-d81f-11eb-89ae-5b5d4fa64784.png)
+
+`distance` - distance between teh origin of the ray and collision point
+`face` what face of the geometry was hit by the ray
+`faceIndex` the index of that face
+`object` useful. Know what object has been intersect. 
+`point` position of the exact collision position
+`uv` uv coord of the geometry. 
+
+If your sphere are moving or spinning, you have to test on each other. Can become very heavy. 
+
+### Animate
+```
+  for (const object of objectsToTest) {
+    object.material.color.set("red");
+  }
+  for (const intersect of intersects) {
+    intersect.object.material.color.set("blue");
+  }
+ ```
+### Orienting for hovermode
+```
+window.addEventListener("mousemove", (e) => {
+  mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -((e.clientY / window.innerHeight) * 2 - 1);
+});
+
+raycast.setFromCamera(mouse, camera);
+const objectsToTest = [object1, object2, object3];
+const intersects = raycast.intersectObjects(objectsToTest);
+```
+
+### mouse enter and mouse out
+* Create a witness variable that contain the currently hovered object. 
+* If object intersects but there wasn't one before, `mouseenter` occured
+* If object intersects but there is a previuos one, `mouseout` occured
+
+```
+ if (intersects.length) {
+    if (!currentIntersect) {
+      console.log("mouseenter");
+      currentIntersect = true;
+    }
+  } else {
+    if (currentIntersect) {
+      console.log("mouse leave");
+      currentIntersect = null;
+    }
+ ```
+ 
+ ### Click
+ work with the mouse enter and mouse out. 
+ ```
+ window.addEventListener("click", (e) => {
+  if (currentIntersect) {
+    console.log("clicked on sphere");
+  }
+});
+```
+
+### Finding clicked object
+```
+window.addEventListener("click", (e) => {
+  if (currentIntersect) {
+    if (currentIntersect.object === object1) {
+      console.log("1");
+    } else if (currentIntersect.object === object2) {
+      console.log("2");
+    } else if (currentIntersect.object === object3) {
+      console.log("3");
+    }
+  }
+});
+```
 # Tips
 ## You Should always optimize 
   Instead of creating 1000 new geometries and materials again and again, you can reuse the geometry. The time to create will go from 231ms to 15ms. When you have the same material, reuse them!
