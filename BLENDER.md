@@ -109,6 +109,23 @@ Show render properties, environmetnal properties, and active object properties.
 ## When joining
 Make sure you have about the same modifier or else you can have problems
 
+## What is raytracing?
+When you use raytracing, blender will render one pixel and shoot rays in every direction and test what colors to collide. This is why you can see colors. 
+
+![image](https://user-images.githubusercontent.com/75579372/123854335-70607200-d8d3-11eb-8e39-a2ad6684240e.png)
+
+The idea of baking is to save a very beautiful render and place them as a geometry on the scene. So the texture will come with the shading and very beautiful with real time. No lights! No shading! that's really cool. Performant great. 
+![image](https://user-images.githubusercontent.com/75579372/123854695-e4027f00-d8d3-11eb-98f1-09860806a4ce.png)
+
+* Create the scene in 3D software
+* Optimize all the objects
+* UV unwrap everything
+* bake the render in texture
+* export scene and texture
+* import everything in threejs and apply texture. 
+
+
+
 ## Pro tips
 * always scale on edit mode so it won't effect the UV unwrapping. Always keep cube scale to 1. 
 * Always have a reference image or model so you know how it will look
