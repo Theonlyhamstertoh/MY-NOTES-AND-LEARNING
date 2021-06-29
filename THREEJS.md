@@ -1436,6 +1436,21 @@ window.addEventListener("click", (e) => {
   }
 });
 ```
+
+# Physics
+You can create your own phsyics with some mathematics and solutiosn like `raycaster`. Can use gravity. But if you want realistic physics, **it's better to use a library**. 
+
+## Theory
+* We will create a physics world
+* And a THREEJS world
+
+So everything first happens in the Physics world and then updates the THREEJS world. You take the coordinates from the Physics world and put it in the THREEJS. 
+
+![image](https://user-images.githubusercontent.com/75579372/123717283-61c17e80-d831-11eb-83fb-2cd90373bff2.png)
+
+
+## Library
+If you can reduce your physics to 2D, then you can use a 2D library. If not, use a 3D library such as cannonjs. S
 # Tips
 ## You Should always optimize 
   Instead of creating 1000 new geometries and materials again and again, you can reuse the geometry. The time to create will go from 231ms to 15ms. When you have the same material, reuse them!
@@ -1444,7 +1459,79 @@ window.addEventListener("click", (e) => {
 If you do it only at the end, you will feel too overwhelmed to add it. If you do, you can open a lot of opportunity to exploring!
 
 
+# CANNONJS PHYSICS
+```
+import CANNON from "cannon"
+const world = new CANNON.World()
+world.gravity.set(0, -9.82, 0) <-- value for earth
+```
 
+In THREEJS, you create `mesh` but in CANNONJS, you create `Body`. 
+* Bodies are objects that will fall and collide with other bodies. But before you can create a `Body`, you have to create the shape. Just like how you have to create the `geometry` and `material` before creating the `mesh` in THREEJS.
+
+
+#### Gaffer on games
+> What is the spiral of death? It’s what happens when your physics simulation can’t keep up with the steps it’s asked to take. For example, if your simulation is told: “OK, please simulate X seconds worth of physics” and if it takes Y seconds of real time to do so where Y > X, then it doesn’t take Einstein to realize that over time your simulation falls behind. It’s called the spiral of death because being behind causes your update to simulate more steps to catch up, which causes you to fall further behind, which causes you to simulate more steps…
+
+> So how do we avoid this? In order to ensure a stable update I recommend leaving some headroom. You really need to ensure that it takes significantly less than X seconds of real time to update X seconds worth of physics simulation. If you can do this then your physics engine can “catch up” from any temporary spike by simulating more frames. Alternatively you can clamp at a maximum # of steps per-frame and the simulation will appear to slow down under heavy load. Arguably this is better than spiraling to death, especially if the heavy load is just a temporary spike.
+
+#### Stack overflow
+>The reason he does it the more complicated way is to decouple the physics simulation frequency from the rendering frequency. This way, you can render at a variable frame rate (120 FPS, 60 FPS, etc) but still update the game logic and physics at a constant rate.
+
+> One of the benefits of this is that the game logic will behave the same no matter the FPS (many old games get buggy if you run them on modern computers because their physics depends on the FPS). Another benefit is that you can use the integration logic to interpolate some extra frames between the physics simulation steps, which results in a smoother animation.
+
+
+## A basic sphere 
+```
+const sphereShape = new CANNON.Sphere(0.5);
+const sphereBody = new CANNON.Body({
+  mass: 1, // the one with higher mass, will have stronger inertia
+  position: new CANNON.Vec3(0, 3, 0), // position of the sphere
+  shape: sphereShape, // the shape itself
+});
+world.addBody(sphereBody); <-- but we still need to update our CANNON.JS world and THREEJS
+```
+
+updating
+```
+world.step(
+ a fixed time stamp,
+ how much time passed since the last step,
+ how much iteration the world can apply to catch up with a potential delay
+)
+```
+becomes...
+```
+let oldElapseTime = 0;
+const tick = () => {
+  const elapsedTime = clock.getElapsedTime();
+  const deltaTime = elapsedTime - oldElapseTime;
+  oldElapseTime = elapsedTime;
+
+world.step(1 / 60, deltaTime, 3);
+};
+```
+
+Body shapes can have complex shapes by adding more together. 
+```
+planeBody.addShape(planeShape)
+planeBody.addShape(planeShape) // multiple shapes.
+```
+
+## Add a simple plane
+```
+const planeShape = new CANNON.Plane();
+const planeBody = new CANNON.Body();
+planeBody.mass = 0; // mass will not make it fall.
+planeBody.addShape(planeShape);
+world.addBody(planeBody);
+```
+You will find something weird however. Remember, a plane by default is vertical! You need to rotate it with quaternion however. 
+
+```
+planeBody.quaternion.setFromAxisAngle(the axis to rotate around, angle);
+planeBody.quaternion.setFromAxisAngle(new CANNON.Vec3(-1, 0, 0), Math.PI / 2);
+```
 
 
 
