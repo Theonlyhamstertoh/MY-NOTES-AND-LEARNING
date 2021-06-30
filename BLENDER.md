@@ -126,6 +126,13 @@ The idea of baking is to save a very beautiful render and place them as a geomet
 
 
 
+# Donut Tutorial
+`alt + z` - open x-ray mode which will allow you to select everything in highlight else you won't be able to select things behind it. 
+`p` - press to convert the selected into a object. Else the things you created in edit mode still belongs to the one object. 
+`ctrl + i` -invert selection
+`ctrl + alt + numpad 0` - get camera snap to position
+Is your object vertices going through another object? Worry no more! We got the ability to stick to the faces! ![image](https://user-images.githubusercontent.com/75579372/124002823-102d0700-d98b-11eb-84e8-799ff5f345fc.png)
+
 ## Pro tips
 * always scale on edit mode so it won't effect the UV unwrapping. Always keep cube scale to 1. 
 * Always have a reference image or model so you know how it will look
