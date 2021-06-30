@@ -1533,6 +1533,30 @@ planeBody.quaternion.setFromAxisAngle(the axis to rotate around, angle);
 planeBody.quaternion.setFromAxisAngle(new CANNON.Vec3(-1, 0, 0), Math.PI / 2);
 ```
 
+## One default material
+```
+// Materials
+// There are just references. Then you associate those with the different bodies. This is just a material but from there we need a contact material
+const defaultMaterial = new CANNON.Material("default");
+
+// contact material
+// What happens when a concrete material meets a plastic material. Thsi is where you provide: friction (how much does it rub), restitution (how much does it bounce). default for both is 0.3;
+
+// We are saying here that if the defaultMaterial comes in contact with the default material, do this.
+const defaultContactMaterial = new CANNON.ContactMaterial(defaultMaterial, defaultMaterial, {
+  friction: 0.1,
+  restitution: 0.8,
+});
+```
+
+OR
+```
+world.defaultContactMaterial = defaultContactMaterial;
+```
+
+## ADD FORCE
+* ApplyForce - `apply force from a specified point in space. Doesn't have to be on the body surface. Can be like a wind. 
+*   
 
 
 
