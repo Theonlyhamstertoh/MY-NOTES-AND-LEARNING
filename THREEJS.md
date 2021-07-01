@@ -1555,7 +1555,61 @@ world.defaultContactMaterial = defaultContactMaterial;
 ```
 
 ## ADD FORCE
-* ApplyForce - `apply force from a specified point in space. Doesn't have to be on the body surface. Can be like a wind. 
-*
+* `ApplyForce` - apply force from a specified point in space. Doesn't have to be on the body surface. Can be like a wind. 
+* `applyImpulse` - like `applyForce`, but instead of adding to the force, it will add to velocity. 
+* `applyLocalForce` - same as `applyForce` but the coordinates are local to the `Body`. `0, 0, 0` won't be the center of the scene but object. 
+
+
+ADDING A BOX
+``` 
+unction createBox(x, y, z, position) {
+  const box = new THREE.Mesh(boxGeo, boxMat);
+  box.scale.set(x, y, z);
+  box.castShadow = true;
+  box.position.copy(position);
+  scene.add(box);
+
+  const boxShape = new CANNON.Box(new CANNON.Vec3(x / 2, y / 2, z / 2));
+  const boxBody = new CANNON.Body({
+    shape: boxShape,
+    mass: 1.5,
+    material: defaultMaterial,
+    position,
+  });
+  world.addBody(boxBody);
+
+  objectsToUpdate.push({
+    mesh: box,
+    body: boxBody,
+  });
+}
+```
+
+ROTATION
+```
+  objectsToUpdate.forEach((object) => {
+    object.mesh.position.copy(object.body.position);
+    object.mesh.quaternion.copy(object.body.quaternion);
+  });
+  ```
+
+## Broadphrase
+`naiveBroadPhase` - * When testing collisions between objects, the very naive approach is for the Body to test against every other Body. If you have a pile object somewhere else and too far to be compared, it still will check collisions. This is called **NaiveBroadphase**
+`gridBroadphrase` - divide the scene into grids and test other objects in the same grid. It won't be tested from far away spheres. The only problem is that if the sphere travels really fast, there will be a bug.
+`SAPBroadphase` - tests bodies on arbitrary axes during multiple steps
+
+
+```
+world.broadphase = new CANNON.SAPBroadphase(world);
+```
+
+
+
+
+
+
+
+
+
 
 
