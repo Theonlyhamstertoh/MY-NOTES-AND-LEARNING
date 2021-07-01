@@ -1556,7 +1556,6 @@ world.defaultContactMaterial = defaultContactMaterial;
 
 ## ADD FORCE
 * ApplyForce - `apply force from a specified point in space. Doesn't have to be on the body surface. Can be like a wind. 
-*   
-
+*
 
 
