@@ -1603,9 +1603,44 @@ ROTATION
 world.broadphase = new CANNON.SAPBroadphase(world);
 ```
 
+## Sleeping
+Even if you improve collision, all the bodies will still be tested even if they are not moving. 
+```world.allowSleep = true;```
 
+## Events
+Beaware, you won't hear sound at first if you don't click first. 
 
+Problem is, you are getting way too many collide events. What you can do is get the strength of the collision and if it's not that high, don't play the sound. 
+```
+const hitSound = new Audio("/sounds/hit.mp3");
 
+const playHitSound = () => {
+  const impactStrength = collision.contact.getImpactVelocityAlongNormal();
+  if (impactStrength > 1.5) {
+    hitSound.currentTime = 0;
+    hitSound.play();
+  }
+};
+  boxBody.addEventListener("collide", playHitSound);
+```
+## Remove 
+```
+reset: () => {
+    objectsToUpdate.forEach((object) => {
+      object.body.removeEventListener("collide", playHitSound);
+      world.removeBody(object.body);
+      scene.remove(object.mesh);
+    });
+ ```
+ 
+ ## Containts
+ * HingeConstriaint - acts like door hinge
+ * distance contraint - force the bodies to keep same distance between each other
+ * LockContraints - merges the bodies like if they were one piece. 
+ * points to pointsContains - glues the bodies at a specific points. 
+
+## Workers
+All your physics are being done by your CPU. Solution is to use workers. Can send and receive data from code to different threads. 
 
 
 
