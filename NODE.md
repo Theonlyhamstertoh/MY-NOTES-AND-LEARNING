@@ -45,7 +45,69 @@ A static server is one that returns your files as it is to your browser. Meaning
 * `200` success, `404` not found, `403` forbidden, unauthorized
 
 #### A Request
+* `HEADER` - Just like how the HTML Head contains useful information about the HTML document, the `HEADER` of a request contains useful metadata. 
+```
+GET https://developer.mozilla.org/en-US/search?q=client+server+overview&topic=apps&topic=html&topic=css&topic=js&topic=api&topic=webdev HTTP/1.1
+Host: developer.mozilla.org
+Connection: keep-alive
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Referer: https://developer.mozilla.org/en-US/
+Accept-Encoding: gzip, deflate, sdch, br
+Accept-Charset: ISO-8859-1,UTF-8;q=0.7,*;q=0.7
+Accept-Language: en-US,en;q=0.8,es;q=0.6
+Cookie: sessionid=6ynxs23n521lu21b1t136rhbv7ezngie; csrftoken=zIPUJsAZv6pcgCBJSCj1zU6pQZbfMUAT; dwf_section_edit=False; dwf_sg_task_completion=False; _gat=1; _ga=GA1.2.1688886003.1471911953; ffo=true
+```
  
+```
+* Type of request (end of first line identify the specific HTTP protocol version)
+* target resource URL
+* URL Parameter
+* Target host website
+* Information of the browser used 
+* sort of responses browser can handle.
+* indeciate the address of the web page that contained the link to the resource
+* Final line contains a cookie to manage session id.
+```
+
+In a `POST` request, the URL dosen't have paramter but is instead inside the body of the request
+### The Response
+```
+* first line include the response code if the request succeeded
+* content-type: shows the response is `text/html` formatted
+* content-length: tells us how big the it is
+* We then see the body
+* the X-Frame-Options: DENY line tells the browser not to allow this page to be embedded in an <iframe> in another site
+```
+```
+HTTP/1.1 200 OK
+Server: Apache
+X-Backend-Server: developer1.webapp.scl3.mozilla.com
+Vary: Accept,Cookie, Accept-Encoding
+Content-Type: text/html; charset=utf-8
+Date: Wed, 07 Sep 2016 00:11:31 GMT
+Keep-Alive: timeout=5, max=999
+Connection: Keep-Alive
+X-Frame-Options: DENY
+Allow: GET
+X-Cache-Info: caching
+Content-Length: 41823
+
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr" class="redesign no-js"  data-ffo-opensanslight=false data-ffo-opensans=false >
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <script>(function(d) { d.className = d.className.replace(/\bno-js/, ''); })(document.documentElement);</script>
+  ...
+```
+
+#### For Post
+* Status code `302 found` tells the browser the post suceeded and must issue a second HTTP request to load the page specified in`LOCATION` 
+
 ### Explain why you might need a back-end for your project.
 ### Explain when you wouldn’t need a back-end for a project.
 ### Explain the event loop.
