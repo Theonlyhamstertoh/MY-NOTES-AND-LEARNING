@@ -123,6 +123,10 @@ Content-Length: 41823
 * Every file in a node application is considered a module. 
 * IN OOP, it means they are PRIVATE. They are scoped only to that file. If you want to use it, you need to explicitly export it. 
 * Each will have a main module
+* `process` object gives information about, and control over, the current NODE.JS process
+* `global` provides a system for accessing and setting global variables.
+
+For example, if you do `global.something = true` in one module, in another module you can access `something` and it will be true (without having to export it).
 
 ### Node Modules
 * Here is the thing, in node, everything is in modules. If you create another folder right, your code can only be access with 
@@ -142,6 +146,17 @@ logger.log("yo") <--- see here
 
 ```
 
+`module.exports.log = log;` ---> creates a object
+`module.exports = log;` -----> makes log the only function with no scope. 
+
+### Module Wrapper function
+Node.js under the hood wraps your code in an IFFE function and pass the require and exports parameters of your file. This way, it keeps top level code scoped to the specific file.
+```
+(function (exports, require, module, __filename, __dirname) {  
+
+
+ });
+ ```
 ### Running Node
 
 type `node app.js` to run the specific file
