@@ -157,9 +157,23 @@ Node.js under the hood wraps your code in an IFFE function and pass the require 
 
  });
  ```
-### Running Node
-
-type `node app.js` to run the specific file
+### Path
+// just get file name and get rid of the extension
+console.log(path.basename(__filename, ".js"));
+// just get directory name
+console.log(path.basename(__dirname));
+// get only the extension
+console.log(path.extname(__filename));
+// join path
+console.log(path.join(__dirname, "cooldog.js"));
+// parse returns object of the properties separated
+console.log(path.parse(__filename));
+┌─────────────────────┬────────────┐
+│          dir        │    base    │
+├──────┬              ├──────┬─────┤
+│ root │              │ name │ ext │
+"  /    home/user/dir / file  .txt "
+└──────┴──────────────┴──────┴─────┘
 
 
 
