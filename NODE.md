@@ -158,15 +158,16 @@ Node.js under the hood wraps your code in an IFFE function and pass the require 
  });
  ```
 ### Path
-// just get file name and get rid of the extension
+ just get file name and get rid of the extension
+ ```
 console.log(path.basename(__filename, ".js"));
-// just get directory name
+ just get directory name
 console.log(path.basename(__dirname));
-// get only the extension
+ get only the extension
 console.log(path.extname(__filename));
-// join path
+ join path
 console.log(path.join(__dirname, "cooldog.js"));
-// parse returns object of the properties separated
+ parse returns object of the properties separated
 console.log(path.parse(__filename));
 ┌─────────────────────┬────────────┐
 │          dir        │    base    │
@@ -174,6 +175,41 @@ console.log(path.parse(__filename));
 │ root │              │ name │ ext │
 "  /    home/user/dir / file  .txt "
 └──────┴──────────────┴──────┴─────┘
+```
+
+# Filesystem
+
+```
+// create folder 
+fs.mkdir(path.join(__dirname, "test2"), { recursive: false }, (err) => console.log(err));
+
+// create and write to file to the newly created folder
+// writeFile will overwrite whatever file is inside
+fs.writeFile(path.join(__dirname, "test2", "test5.md"), "testing....", (err) => {
+  if (err) throw err;
+  console.log("THE FILE HAS BEEN SAVED");
+});
+
+// append file will not overwrite
+fs.writeFile(path.join(__dirname, "test2", "new.md"), "testing....", (err) => {
+  if (err) throw err;
+  console.log("THE FILE HAS BEEN SAVED");
+  fs.appendFile(path.join(__dirname, "test2", "new.md"), "second testing but without overwriting", (err) => {
+    if (err) throw err;
+  });
+});
+
+// read file. You have to include the `encoding type` or else it will just return you a bunch of numbers.
+fs.readFile(path.join(__dirname, "test2", "new.md"), "utf8", (err, data) => {
+  if (err) throw err;
+});
+
+fs.rename(path.join(__dirname, "test2"), path.join(__dirname, "nomoretest"), (err) => {
+  if (err) throw err;
+});
+
+
+```
 
 
 
