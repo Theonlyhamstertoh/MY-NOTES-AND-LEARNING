@@ -211,6 +211,31 @@ fs.rename(path.join(__dirname, "test2"), path.join(__dirname, "nomoretest"), (er
 
 ```
 
+# OS
+```
+const os = require("os");
+// get the platform
+os.platform();
+// get CPU architecture 
+os.arch();
+// get data of all the cpus
+os.cpus();
 
+// Returns the amount of free system memory in bytes as an integer.
+os.freemem()
+
+// return all the memory
+os.totalmem();
+
+// Returns the string path of the current user's home directory.
+os.homedir();
+
+// return computer uptime
+os.uptime();
+
+// return computer hostname (ex.laptop-qqs98kh)
+os.hostname()
+
+//
 
 
