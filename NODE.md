@@ -177,7 +177,7 @@ console.log(path.parse(__filename));
 └──────┴──────────────┴──────┴─────┘
 ```
 
-# Filesystem
+### Filesystem
 
 ```
 // create folder 
@@ -211,7 +211,7 @@ fs.rename(path.join(__dirname, "test2"), path.join(__dirname, "nomoretest"), (er
 
 ```
 
-# OS
+### OS
 ```
 const os = require("os");
 // get the platform
@@ -237,5 +237,29 @@ os.uptime();
 os.hostname()
 
 //
+```
+### URL
+```
+const url = require("url");
 
+const myURL = new URL("http://mywebsite.com/hello.html?id=100&status=active");
 
+// get the URL fully
+console.log(myURL.href);
+console.log(myURL.toString());
+// get host name
+console.log(myURL.host);
+// host name (does not get the port)
+console.log(myURL.hostname);
+// get path name (/hello.html)
+console.log(myURL.pathname);
+//get the query (everything after ?)
+console.log(myURL.search);
+// get the query as a object
+console.log(myURL.searchParams);
+// add param
+myURL.searchParams.append("cool", "124");
+
+// loop through param
+myURL.searchParams.forEach((value, name) => console.log(value, name));
+```
