@@ -114,3 +114,38 @@ Content-Length: 41823
 ### Understand the origin of the Node.js runtime.
 ### Write a simple “hello world” application and run it in the console of your machine.
 ### Understand what Node.js really is.
+
+# Node Core
+* Doesn't have any WEBAPIS (documents, windows...)
+* Another another object called `global`. Instead of `window.console.log` it becomes `global.console.log` 
+* However, variables you defined are not added to `global` object. This is because they are only scoped to the file and cannot access outside of it
+* Avoid defining variables and functions in the global scope else you will have conflicts
+* Every file in a node application is considered a module. 
+* IN OOP, it means they are PRIVATE. They are scoped only to that file. If you want to use it, you need to explicitly export it. 
+* Each will have a main module
+
+### Node Modules
+* Here is the thing, in node, everything is in modules. If you create another folder right, your code can only be access with 
+```
+///// myfirstmodule.js /////
+function log(message) {
+  // send http request
+  console.log(message);
+}
+
+module.exports.log = log;
+
+
+///// app.js /////
+const logger = require("./logger")
+logger.log("yo") <--- see here
+
+```
+
+### Running Node
+
+type `node app.js` to run the specific file
+
+
+
+
