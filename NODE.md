@@ -263,3 +263,61 @@ myURL.searchParams.append("cool", "124");
 // loop through param
 myURL.searchParams.forEach((value, name) => console.log(value, name));
 ```
+
+### Event Emitter
+Think of a addEventListener and how you can have different types of events you can be listening for. A `click` or a `mousedown` or a `keydown` and so on. With `Event Emitter`, you can create your own events to listen to. For example, 
+```
+const EventEmitter = require("events");
+// create class that extends eventEmitter
+class MyEmitter extends EventEmitter {}
+
+// initialize the object
+const myEmitter = new MyEmitter();
+
+// listen to a event emit named "hotdog"
+myEmitter.on("hotdog", () => console.log("event fired!"));
+
+myEmitter.emit("hotdog")
+```
+The following code above extends the `eventEmitter` class and listens for a event called `hotdog`. When I emit it, it will then run the callback. 
+
+### http
+```
+http
+  .createServer((req, res) => {
+    // write a response
+    res.write("hello world");
+    res.end();
+  })
+  .listen(6001, () => console.log("server running"));
+```
+
+Example
+```
+
+const server = http.createServer((req, res) => {
+  if (req.url === "/") {
+    // make it a html type;
+    const pathToHTML = path.join(__dirname, "public", "index.html");
+    res.writeHead(200, { "Content-Type": "text/html" });
+    const content = fs.readFile(pathToHTML, "utf8", (err, data) => {
+      if (err) throw err;
+      res.end(data);
+    });
+  } else if (req.url === "/api/users") {
+    const users = [
+      { name: "Bob", age: 16 },
+      { name: "john", age: 26 },
+      { name: "Kennedy", age: 46 },
+    ];
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(users));
+  }
+});
+
+// first look for environment variable and if not found, use 5000
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => console.log("server running..."));
+```
+
+
