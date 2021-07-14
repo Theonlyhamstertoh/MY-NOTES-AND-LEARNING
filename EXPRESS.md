@@ -79,6 +79,16 @@ app.get("/about", middlewareArray, (req, res, next) => {
   res.send("GAME OVER");
 });
 ```
+
+### Error Handling
+Define your middleware function as usual but now with four arguments:
+```
+app.use(function (err, req, res, next) {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+})
+```
+
 ### Basic Route Handling
 * Handling requests/routes is simple
 * app
