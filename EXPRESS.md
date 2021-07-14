@@ -68,11 +68,15 @@ app.get("/route", middlewareFunctiom)
 * Use this to serve static files, including images, CSS, and Javascript. 
 `app.use(express.static('public'));`
 
-### Can specify a folder instead of going by the base URL
-`app.use('/media', express.static('public'));`
-
+### Can specify a folder instead of going by the base URL && serve static files out of a specific folder!
+```
+// this one line right here makes it so that the files are all served from that one folder you specified.
+app.use(express.static(path.join(__dirname, "public")));
+// add a prefixed URL folder name
+app.use("/pages", express.static(path.join(__dirname, "public")))
 ### Middleware as a array
 Declare the middleware substack as a array to allow for resuability
+```
 ```
 const logOriginalURL = (req, res, next) => {
   console.log("original:", req.originalUrl);
