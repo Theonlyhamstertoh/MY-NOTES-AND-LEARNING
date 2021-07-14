@@ -95,6 +95,11 @@ app.get("/about", middlewareArray, (req, res, next) => {
 ### res.render("index")
 Renders a view and sends the rendered HTML string to the client.
 
+### res.json
+```
+// get all json data
+app.get("/api/members", (req, res) => res.json(users));
+```
 
 ### Error Handling
 Define your middleware function as usual but now with four arguments:
@@ -105,9 +110,6 @@ app.use(function (err, req, res, next) {
 })
 ```
 
-### Basic Route Handling
-* Handling requests/routes is simple
-* app
 
 Describe Express and Node’s main benefits.
 Describe the relationship between Node and Express.
