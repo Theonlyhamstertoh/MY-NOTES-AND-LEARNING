@@ -43,6 +43,8 @@ app.all('/secret', function(req, res, next) {
 * If `next()` is not called, then the request is left hanging.
 * OFten the case that middleware are called before setting routes
 * The difference between a `middleware function` and a `route handler callback` is that the middleware function must have a third argument `next` which are expected to call to complete the request cycle.
+* Examines incoming request and prepare it for further processing. 
+* For example, check if the user is trying to access a portion that requires authentication and if good continue or show error
 
 ``` 
 // this will be used by all routes
@@ -62,6 +64,12 @@ app.get("/route", middlewareFunctiom)
 * Application-level middleware: using the `app` 
 * writing `next("route")` will automatically skip to the next route stack. 
 
+### Serving Static Files
+* Use this to serve static files, including images, CSS, and Javascript. 
+`app.use(express.static('public'));`
+
+### Can specify a folder instead of going by the base URL
+`app.use('/media', express.static('public'));`
 
 ### Middleware as a array
 Declare the middleware substack as a array to allow for resuability
@@ -79,6 +87,10 @@ app.get("/about", middlewareArray, (req, res, next) => {
   res.send("GAME OVER");
 });
 ```
+
+### res.render("index")
+Renders a view and sends the rendered HTML string to the client.
+
 
 ### Error Handling
 Define your middleware function as usual but now with four arguments:
