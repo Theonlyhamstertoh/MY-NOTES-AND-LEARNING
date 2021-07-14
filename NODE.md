@@ -319,5 +319,16 @@ const server = http.createServer((req, res) => {
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => console.log("server running..."));
 ```
+* `res.end()` can be used to run and ends the request. 
+* `res.write()` can be called multiple amount of times over and over again.
 
+
+What is a File System Module? How and why would you use it?
+* The fs module is a way to read, write, delete, create files. You will use this to say get the HTML or use the CSS or read a file with data. 
+What is the command for installing a package locally in with npm?
+* npm install -d ...
+What is the command for installing a package globally in with npm?
+* npm install -g ...
+What is the difference between a global and local package install with npm?
+* a global package is accessible in any file while a local only belong to that file. 
 
