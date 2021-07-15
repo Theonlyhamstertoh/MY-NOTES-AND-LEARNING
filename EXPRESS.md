@@ -34,7 +34,21 @@ app.all('/secret', function(req, res, next) {
 ### Adding folders in Routing
 * Type `const router = express.Router()` and use that instead of `app.get()` would be how you add routes. The route `/app` would then become ``host/router/app"
 * You will have a new file specifically called say `wiki.js` and export the `router`. Then to use it, you will simply write in the main file `app.use("/wiki", wiki)`
+* When you use route, the `router.get("/")` will now be based on that route folder. So if you have a route at `/icecream` then any future route `/` will become the `/icecream` route homepage.
 
+```
+router.get("/:id", (req, res) => {
+  // this is a great method since filter returns the one and we then directly send it.
+  const found = users.some((user) => user.id.toString() === req.params.id);
+  console.log(found);
+  if (found === false) {
+    res.status(400).json({ message: "Member not found" });
+  } else {
+    res.json(users.filter((user) => user.id.toString() === req.params.id));
+  }
+});
+
+```
 ### Using Middleware
 * An express application is really just a series of middleware function calls
 * Middleware can perform any operation, execute any code, make changes to the request and response objects, also end the request-response cycle
@@ -91,7 +105,10 @@ app.get("/about", middlewareArray, (req, res, next) => {
   res.send("GAME OVER");
 });
 ```
-
+### Give status to have better error handling
+```
+res.status(400).json({ message: "Member not found" });
+```
 ### res.render("index")
 Renders a view and sends the rendered HTML string to the client.
 
