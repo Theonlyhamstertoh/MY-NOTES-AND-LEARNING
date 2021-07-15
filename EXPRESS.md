@@ -127,20 +127,10 @@ app.use(function (err, req, res, next) {
 })
 ```
 
-
-Describe Express and Node’s main benefits.
-Describe the relationship between Node and Express.
-Explain what a module is and how Express fits in.
-Import and create modules.
-Describe asynchronous APIs.
-Describe and create route handlers.
-Describe and use middleware.
-Describe error handling in Express.
-Describe what the main parts of an Express app might look like.
-
-
-#### Setting up a Node development environment
-Describe Express development environment.
-Import Express into an application using NPM.
-Create and run applications using the Express application generator tool.
-Set up a development environment for Express on your computer.
+### POST Parsing
+```
+// parse data passed through the body. By adding this, the req.body will no longer be undefined and data can actually be parsed as JSON.
+app.use(express.json());
+```
+### Templating engines
+* There are many templating engines out there like: pug, ejs, handlebars, and so on. pug will have some getting used to because it feels significantly different from normal HTML. As for me, I think I want to spend some time learning ejs. That will be good for me. 
