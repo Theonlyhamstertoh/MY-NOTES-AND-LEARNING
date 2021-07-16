@@ -139,3 +139,26 @@ app.use(express.json());
 ### Express Engine
 Write `express [name] --view=ejd --css=[]` to create a skeleton project.
 You can then run `npm start` `DEBUG=express-locallibrary-tutorial:* npm start`. The difference is the latter enable debugging. 
+
+Middleware
+**cookie-parser**: Used to parse the cookie header and populate req.cookies (essentially provides a convenient method for accessing cookie information).
+**debug**: A tiny node debugging utility modeled after node core's debugging technique.
+**morgan**: An HTTP request logger middleware for node.
+**http-errors**: Create HTTP errors where needed (for express error handling).
+
+### crud and mvc
+
+Explain CRUD and how it correlates to HTTP methods in Express.
+* CRUD stands for `create, read, update, delete`. These are the four basic actions a user should expect to do. add things and delete things. These correlates to the `app.get() = read`, `app.delete() = delete`, `app.post() = add`, `app.put() = update`.   
+Describe MVC and how it correlates to Express.
+* MVC is simply a coding architecture. The structure of the system that separates the logic from one another. 
+* MVC stands for `model`, `view`, and `controller`. The `view` is what will render your data. In this case, `ejs` will be what show the data. In react case, `react` is the view. `Controller` is what decides should be rendered or displayed. While `models` is the data and data-managment of the application. The `model` enables a internal inference (API) to allow for the program to interact internally. While the `view` and `controller` enable interaction on the `GUI or the web` to allow for the users to communicate. 
+* **All interaction flows from the VIEW/CONTROLLER to the MODEL. THE MODEL does not ever tell what the view/controller should do**
+Describe databases and ORMs as well as how to use them with Node/Express apps.
+Design and create your own models using Mongoose.
+Declare object schema and models.
+Describe the main field types and basic validation.
+List a few ways to access model data.
+Test models by creating a number of instances (using a standalone script).
+
+
