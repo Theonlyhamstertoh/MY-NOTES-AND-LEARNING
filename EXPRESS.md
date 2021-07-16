@@ -134,3 +134,8 @@ app.use(express.json());
 ```
 ### Templating engines
 * There are many templating engines out there like: pug, ejs, handlebars, and so on. pug will have some getting used to because it feels significantly different from normal HTML. As for me, I think I want to spend some time learning ejs. That will be good for me. 
+
+
+### Express Engine
+Write `express [name] --view=ejd --css=[]` to create a skeleton project.
+You can then run `npm start` `DEBUG=express-locallibrary-tutorial:* npm start`. The difference is the latter enable debugging. 
