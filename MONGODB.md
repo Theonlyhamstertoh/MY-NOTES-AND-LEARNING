@@ -108,3 +108,11 @@ console.log(user1.fullname)
 ```
 
 One problem is that a virtual field cannot be used in looking up things in the document. Because they are not actually saved in the database, that field technially does not exist. 
+
+### String Patterns
+* `ab?d` - it means the preceding letter can have 0 or 1 occurence of it. So you can have it or not. 
+* `ab+d` - have one or more of the preceding letter before it
+* `ab*cd` - can have any letter within `ab_____________________________cd` as long as the endpoints are still the same
+* `()` - Grouping match on a set of characters to perform another operation on, e.g. '/ab(cd)?e' will perform a ?-match on the group `(cd)`—it will match abe and abcde.
+
+
