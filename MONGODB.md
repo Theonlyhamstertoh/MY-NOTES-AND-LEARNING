@@ -74,4 +74,37 @@ Once Mongoose save to the database, mongoose sent you back the actual document s
 **If collection doesn't exist, it will create one for you.**
 
 ### Getting a document
-If you want to get a document from a collection, you will have to use the model and write `Blog.find().then(....).catch(...)`. Remember that they are async and should be treated asyncly. 
+If you want to get a document from a collection, you will have to use the model and write `Blog.find().then(....).catch(...)`. Remember that they are async and should be treated asyncly. Finds all of the documents inside the collection. 
+
+### Virtual
+* A virtual is a property not stored in MongoDB. 
+
+### Sorting a document
+`Blog.find().sort()` can be used to sort. By writing for exmample {createdAt : -1}, it will sort by the newest. 
+
+### Getting a document by ID
+Use `Blog.findById(id)`. It is async and Mongoose will automatically convert the string you put in into a `ObjectId` because in Mongoose, the id is stored as ObjectID. 
+
+### Virtuals
+Imagine virtuals as additional properties you create to enhance a a existing object. For example, a user property has both `first` and `last` name but what if you want to combine the two together? You can store a `fullname` property into the MongoDB but feels a bit redudant wouldn't it? What if you can create a property that combine the two first and last property together and not save it into the database so that the database have only what is necessary data? This is where Virtuals comes to play. It doesn't actually get stored into the database but when you use your schema, you will have that extra property `fullname` to use. 
+
+* There are two ways you can use virtuals: `get` and `set` methods. A get method only allow you to read the data while a `set` will allow you to override the previous data. For example, if you add the below: 
+```
+userSchema.virtual('fullname').set(function (name) {  
+  var split = name.split(' ');
+  this.first = split[0];
+  this.last = split[1];
+});
+```
+And you write `user1.fullname = "weibo zhang"`, you will overwrite the database with that new data. 
+
+To use it as get, do 
+```
+userSchema.virtual('fullname').get(function() {  
+    return this.first + ' ' + this.last;
+});
+
+console.log(user1.fullname)
+```
+
+One problem is that a virtual field cannot be used in looking up things in the document. Because they are not actually saved in the database, that field technially does not exist. 
