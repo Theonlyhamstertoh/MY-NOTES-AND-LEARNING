@@ -115,4 +115,73 @@ One problem is that a virtual field cannot be used in looking up things in the d
 * `ab*cd` - can have any letter within `ab_____________________________cd` as long as the endpoints are still the same
 * `()` - Grouping match on a set of characters to perform another operation on, e.g. '/ab(cd)?e' will perform a ?-match on the group `(cd)`—it will match abe and abcde.
 
+### Populate
+If you write `    user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },`, You can be able to reference another collection and use that data. That will keep things in a much more organized place. 
 
+### Async Module
+You can use the native Promises but the Async module solves some of the hassles you will be facing with Promises. Some useful methods are 
+`async.parallel()` - run any that should be run concurrently
+`async.series()` - make sure the async event runs in a series one after another
+`async.waterfall()` - every async event must run in series and use the previous async return value
+
+### Async.parallel (from MDN)
+The first argument to async.parallel() is a collection of the asynchronous functions to run (an array, object or other iterable). Each function is passed a callback(err, result) which it must call on completion with an error err (which can be null) and an optional results value.
+
+The optional second argument to  async.parallel() is a callback that will be run when all the functions in the first argument have completed. The callback is invoked with an error argument and a result collection that contains the results of the individual asynchronous operations. The result collection is of the same type as the first argument (i.e. if you pass an array of asynchronous functions, the final callback will be invoked with an array of results). If any of the parallel functions reports an error the callback is invoked early (with the error value).
+```
+async.parallel({
+  one: function(callback) { ... },
+  two: function(callback) { ... },
+  ...
+  something_else: function(callback) { ... }
+  },
+  // optional callback
+  function(err, results) {
+    // 'results' is now equal to: {one: 1, two: 2, ..., something_else: some_value}
+  }
+);
+```
+
+### Async.series
+The method async.series() is used to run multiple asynchronous operations in sequence, when subsequent functions do not depend on the output of earlier functions. It is essentially declared and behaves in the same way as async.parallel().
+
+**If the order really is important, then you should pass an array instead of an object, as shown below.**
+```
+async.series([
+  function(callback) {
+    // do some stuff ...
+    callback(null, 'one');
+  },
+  function(callback) {
+    // do some more stuff ...
+    callback(null, 'two');
+  }
+ ],
+  // optional callback
+  function(err, results) {
+  // results is now equal to ['one', 'two']
+  }
+);
+```
+
+### Async.Waterfall
+The method async.waterfall() is used to run multiple asynchronous operations in sequence when each operation is dependent on the result of the previous operation.
+
+The callback invoked by each asynchronous function contains null for the first argument and results in subsequent arguments. Each function in the series takes the results arguments of the previous callback as the first parameters, and then a callback function. When all operations are complete, a final callback is invoked with the result of the last operation. The way this works is more clear when you consider the code fragment below (this example is from the async documentation):
+```
+async.waterfall([
+  function(callback) {
+    callback(null, 'one', 'two');
+  },
+  function(arg1, arg2, callback) {
+    // arg1 now equals 'one' and arg2 now equals 'two'
+    callback(null, 'three');
+  },
+  function(arg1, callback) {
+    // arg1 now equals 'three'
+    callback(null, 'done');
+  }
+], function (err, result) {
+  // result now equals 'done'
+}
+);```
