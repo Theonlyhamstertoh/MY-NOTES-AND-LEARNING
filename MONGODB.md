@@ -184,4 +184,19 @@ async.waterfall([
 ], function (err, result) {
   // result now equals 'done'
 }
-);```
+);
+```
+
+### `$ls` less Than Search
+`const users = await User.find({ age: { $lt: 20 } });` - get all user whose age is less than 20
+
+### `$gt` greater than search
+`const users = await User.find({ age: { $gt: 20 } });` - get all user whose age is greater than 20
+
+### Best practice
+* Make it a practice to separate your files into multiple folders. One for controller. one for models. One for views. 
+* Use Try and catch blocks 
+* Use required and such to require values
+
+
+There are three things to keep in mind. When you are doing a one-to-many type of relationship, there are three ways you can go about doing it. one way is to directing embed the code into the document. This means putting the other Schema directly inside the other schema. The second way is to store the references in a array and reference it that way. Usually if you have one way to get something, you don't need to do both. For example, comments can grow to become super large if stored in a array. To go about fixing this issue, you can reference it's parent to get the data instead. 
