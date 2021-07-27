@@ -23,5 +23,11 @@ Another way to share state with two different variable name is just like how you
 const countAtom = atom(0)
 const newCount = countAtom;
 ```
+## Creating read-only atoms
+Let's say, you have a atom that stores all the users you have online and now you want to read the data. One way to go about doing it is to simply attach a `length` to the atom. Another way is to create a special atom that only reads the value. For example, take a look at the following below. We use a special (get) atom that only returns the read value of the atom. 
 
+```
+const dotsAtom = atom([]);
+const numberOfDotsAtom = atom((get) => get(dotsAtom).length);
+```
 
