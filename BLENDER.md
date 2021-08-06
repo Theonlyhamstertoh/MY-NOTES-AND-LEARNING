@@ -64,6 +64,7 @@ The lighter color is the active one.
 #### `f12` to render camera
 #### `f3` to search
 #### `z` to open shading mode
+#### `Ctrl-alt-0` to open camera to current view
 ![image](https://user-images.githubusercontent.com/75579372/123148909-925e7e00-d415-11eb-8451-876be1f578c6.png)
 
 
