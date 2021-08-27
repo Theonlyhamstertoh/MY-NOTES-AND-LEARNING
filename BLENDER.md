@@ -139,3 +139,6 @@ Is your object vertices going through another object? Worry no more! We got the 
 * Always have a reference image or model so you know how it will look
 
 `blend1` is a backup file. 
+
+# Modifiers
+What modifiers allow you to do is allow for procedural control, tweak however you like, and won't lose your geometry. This will allow you to create some neat animated effects.
