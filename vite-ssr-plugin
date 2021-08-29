@@ -1,0 +1,4 @@
+# VITE SSR PLUGIN
+
+* If you don't include a folder, the page will directly access the javascript file like nextjs does. If you however use a folder as the "name", you will need to call your file "index.page.js" so vite knows this is the default page. 
+* **When you are using a folder**, you are also able to create routes within that page. For example, a folder of "about" can have a "weibo.page.jsx" that only is accessible from the "about slug" first. This is different from dynamic routing in that it is predefined. 
