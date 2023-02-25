@@ -1,0 +1,20 @@
+{
+  "legacyEditor": false,
+  "livePreview": true,
+  "fileSortOrder": "alphabetical",
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "🖼️assets",
+  "showLineNumber": false,
+  "spellcheck": true,
+  "foldIndent": true,
+  "pdfExportSettings": {
+    "pageSize": "Letter",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  },
+  "newFileLocation": "current",
+  "showUnsupportedFiles": true,
+  "showFrontmatter": true
+}

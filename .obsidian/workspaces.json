@@ -1,0 +1,201 @@
+{
+  "workspaces": {
+    "weibo-default-theme": {
+      "main": {
+        "id": "4f294c91b824b03f",
+        "type": "split",
+        "children": [
+          {
+            "id": "509dfcda80ced0d3",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "86a4291f3a5fc606",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "weibo-journal/2022/November/November 26th, Saturday.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              },
+              {
+                "id": "3f4924300b4fc2d4",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "weibo-journal/2022/November/November 8th, Tuesday.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              },
+              {
+                "id": "c4be9ce79088e55d",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "projects/Multiplayer Pacman.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              },
+              {
+                "id": "6cb12e0936753847",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "todo-list.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              },
+              {
+                "id": "0d9cc8cd25681acd",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "💡ideas/questions-to-ask.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              },
+              {
+                "id": "515eed983a5d7e3e",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "weibo-journal/2022/November/November 20th, Sunday.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              },
+              {
+                "id": "b31ff269e4d291f4",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "weibo-journal/2022/August/August 5th, Friday.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              }
+            ],
+            "currentTab": 6
+          }
+        ],
+        "direction": "vertical"
+      },
+      "left": {
+        "id": "0cf6a6e33bc89d96",
+        "type": "split",
+        "children": [
+          {
+            "id": "3b04d09600b6cb7a",
+            "type": "tabs",
+            "dimension": 67.27605118829982,
+            "children": [
+              {
+                "id": "23a8262c1bb80cc9",
+                "type": "leaf",
+                "state": {
+                  "type": "file-explorer",
+                  "state": {
+                    "sortOrder": "alphabetical"
+                  }
+                }
+              },
+              {
+                "id": "fd23813b5595e038",
+                "type": "leaf",
+                "state": {
+                  "type": "recent-files",
+                  "state": {}
+                }
+              },
+              {
+                "id": "b5c06ff3ed65b1ac",
+                "type": "leaf",
+                "state": {
+                  "type": "search",
+                  "state": {
+                    "query": "",
+                    "matchingCase": false,
+                    "explainSearch": false,
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "id": "1545094881a3daed",
+            "type": "tabs",
+            "dimension": 32.72394881170018,
+            "children": [
+              {
+                "id": "e4531cb863ac8676",
+                "type": "leaf",
+                "state": {
+                  "type": "calendar",
+                  "state": {}
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal",
+        "width": 251
+      },
+      "right": {
+        "id": "bc07a3e574b795ef",
+        "type": "split",
+        "children": [
+          {
+            "id": "7afebcb942c8211c",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "206690878b1cc57f",
+                "type": "leaf",
+                "state": {
+                  "type": "backlink",
+                  "state": {
+                    "file": "weibo-journal/2022/August/August 5th, Friday.md",
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical",
+                    "showSearch": false,
+                    "searchQuery": "",
+                    "backlinkCollapsed": false,
+                    "unlinkedCollapsed": true
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal",
+        "width": 282.3928527832031,
+        "collapsed": true
+      },
+      "active": "b31ff269e4d291f4"
+    }
+  },
+  "active": "weibo-default-theme"
+}

@@ -1,0 +1,6 @@
+{
+  "format": "MMMM Do, dddd, y",
+  "folder": "weibo-journal/2022/November",
+  "autorun": true,
+  "template": "template/journal-template"
+}

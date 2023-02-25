@@ -1,0 +1,23 @@
+{
+  "Yin and Yang@@no-svg-replace": false,
+  "Yin and Yang@@macOS-translucent": true,
+  "Yin and Yang@@d-accent": "#F6FFCC",
+  "Yin and Yang@@base-d": 9,
+  "Yin and Yang@@base-s": 1,
+  "sanctum@@stendig": false,
+  "sanctum@@calendar-flip": false,
+  "sanctum@@calendar-dot@@light": "#FFFFFF",
+  "sanctum@@calendar-dot-hover@@light": "#7D3F18",
+  "sanctum@@no-sanctum-icons": false,
+  "sanctum@@checkbox-color-rgb": "246, 141, 69",
+  "sanctum@@code-lines": true,
+  "sanctum@@code-label": false,
+  "sanctum@@code-border": true,
+  "sanctum@@hide-vault-title": false,
+  "sanctum@@wrap-nav-titles": false,
+  "sanctum@@active-line-accent": "rgba(var(--color-accent-rgb), .3)",
+  "sanctum@@nav-folder-indicators": false,
+  "sanctum@@colorful-active-nav": false,
+  "sanctum@@h1-color": "#F68D45",
+  "sanctum@@clean-embeds": true
+}

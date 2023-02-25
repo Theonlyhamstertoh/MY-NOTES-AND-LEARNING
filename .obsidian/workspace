@@ -1,0 +1,143 @@
+{
+  "main": {
+    "id": "4f294c91b824b03f",
+    "type": "split",
+    "children": [
+      {
+        "id": "86a4291f3a5fc606",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "🧾journal/2022/October 17th, Monday.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0cf6a6e33bc89d96",
+    "type": "split",
+    "children": [
+      {
+        "id": "3b04d09600b6cb7a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "23a8262c1bb80cc9",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "b5c06ff3ed65b1ac",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 254
+  },
+  "right": {
+    "id": "bc07a3e574b795ef",
+    "type": "split",
+    "children": [
+      {
+        "id": "38a9ea4b0244870b",
+        "type": "tabs",
+        "dimension": 50,
+        "children": [
+          {
+            "id": "4f0bd00619668bc5",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          },
+          {
+            "id": "96d86a2913a5a5d3",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          }
+        ]
+      },
+      {
+        "id": "ec53b7222f050e3d",
+        "type": "tabs",
+        "dimension": 50,
+        "children": [
+          {
+            "id": "cda6b66dd76e7ac9",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "🧾journal/2022/October 17th, Monday.md",
+                "collapseAll": true,
+                "extraContext": true,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              }
+            }
+          },
+          {
+            "id": "251469f38f8cda62",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {}
+            }
+          },
+          {
+            "id": "ea7c9f0fbe3094bc",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 282.3928527832031
+  },
+  "active": "86a4291f3a5fc606",
+  "lastOpenFiles": [
+    "Readings/Everything's An Argument/Chapter 5 - Fallacies.md",
+    "Readings/Everything's An Argument/Chapter 1 - Undestanding Arguments and Reading Them Critically.md",
+    "🧾journal/2022/October 17th, Monday.md",
+    "💡ideas/quotes-to-live-by.md",
+    "💡ideas/projects-to-do.md",
+    "💡ideas/dreams.md",
+    "Readings/Everything's An Argument/Chapter 12 -  Proposals.md",
+    "Readings/Everything's An Argument/Chapter 14 - Visual Rhetoric.md",
+    "Readings/Everything's An Argument/Don't Look Up Analysis.md",
+    "Readings/Everything's An Argument/Review.md"
+  ]
+}

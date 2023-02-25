@@ -1,0 +1,93 @@
+{
+  "statusBarOrder": [],
+  "ribbonBarOrder": [
+    "23373856269926401044791807",
+    "7936541217259523215499660",
+    "62086243344711681235738650",
+    "79197221253283843554360994",
+    "22537797936087042100426429",
+    "70539640926371843199063707",
+    "20539607351296003110483425",
+    "6785077665071104889677067",
+    "45551091701514243656382428",
+    "3856008753446912907088109",
+    "975301173575683235000764"
+  ],
+  "fileExplorerOrder": {
+    "/": [
+      "weibo-journal",
+      "🖼️assets",
+      "💡weibo-ideas",
+      "weibo-projects",
+      "weibo-readings",
+      "weibo-notes",
+      "achievements.md",
+      "todo-list.md"
+    ],
+    "weibo-journal/2022": [
+      "weibo-journal/2022/November",
+      "weibo-journal/2022/October",
+      "weibo-journal/2022/September",
+      "weibo-journal/2022/August",
+      "weibo-journal/2022/July",
+      "weibo-journal/2022/June",
+      "weibo-journal/2022/May",
+      "weibo-journal/2022/April"
+    ],
+    "weibo-journal": [
+      "weibo-journal/2022",
+      "weibo-journal/journal-template.md",
+      "weibo-journal/achievements.md"
+    ],
+    "readings": [
+      "readings/Deep Work.md",
+      "readings/SPIRE, Antifragility - Tal Ben-Shahar.md",
+      "readings/Too Soon Old, Too Late Smart.md",
+      "readings/Everything's An Argument",
+      "readings/All Quiet on the Western Front"
+    ],
+    "weibo-readings": [
+      "weibo-readings/TED",
+      "weibo-readings/Deep Work.md",
+      "weibo-readings/SPIRE, Antifragility - Tal Ben-Shahar.md",
+      "weibo-readings/Too Soon Old, Too Late Smart.md",
+      "weibo-readings/Everything's An Argument",
+      "weibo-readings/All Quiet on the Western Front"
+    ],
+    "weibo-journal/2022/misc/Oxford Academy/Government": [
+      "weibo-journal/2022/misc/Oxford Academy/Government/Unit 1.md",
+      "weibo-journal/2022/misc/Oxford Academy/Government/Congress.md",
+      "weibo-journal/2022/misc/Oxford Academy/Government/Executive.md",
+      "weibo-journal/2022/misc/Oxford Academy/Government/Judicidal.md"
+    ],
+    "weibo-journal/2022/misc/Oxford Academy": [
+      "weibo-journal/2022/misc/Oxford Academy/Tempest Presentation Ideas.md",
+      "weibo-journal/2022/misc/Oxford Academy/the tempest act iv.md",
+      "weibo-journal/2022/misc/Oxford Academy/Government"
+    ],
+    "weibo-notes": [
+      "weibo-notes/writings",
+      "weibo-notes/coding",
+      "weibo-notes/driving-study-notes.md",
+      "weibo-notes/jobs-applied.md"
+    ],
+    "weibo-journal/2022/November": [
+      "weibo-journal/2022/November/November 2nd, Wednesday.md",
+      "weibo-journal/2022/November/November 8th, Tuesday.md",
+      "weibo-journal/2022/November/November 9th, Wednesday.md",
+      "weibo-journal/2022/November/November 14th, Monday.md",
+      "weibo-journal/2022/November/November 17th, Thursday.md",
+      "weibo-journal/2022/November/November 20th, Sunday.md",
+      "weibo-journal/2022/November/November 21st, Monday.md",
+      "weibo-journal/2022/November/November 22nd, Tuesday.md",
+      "weibo-journal/2022/November/November 23rd, Wednesday.md",
+      "weibo-journal/2022/November/November 26th, Saturday.md",
+      "weibo-journal/2022/November/2022-11-27 Sunday.md",
+      "weibo-journal/2022/November/2022-11-28 Monday.md"
+    ]
+  },
+  "actionBarOrder": {},
+  "autoHide": false,
+  "autoHideDelay": 2000,
+  "dragDelay": 200
+}
