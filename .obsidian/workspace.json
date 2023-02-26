@@ -77,7 +77,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 251
+    "width": 251,
+    "collapsed": true
   },
   "right": {
     "id": "bc07a3e574b795ef",
@@ -123,7 +124,8 @@
       "templater-obsidian:Templater": false,
       "oz-clear-unused-images:Clear Unused Images": false,
       "obsidian42-brat:BRAT": false,
-      "periodic-notes:Open today": false
+      "periodic-notes:Open today": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
   "active": "86a4291f3a5fc606",
