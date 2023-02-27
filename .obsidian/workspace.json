@@ -57,8 +57,17 @@
                 "sortOrder": "alphabetical"
               }
             }
+          },
+          {
+            "id": "b8680b57b9b1b1b5",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       },
       {
         "id": "1545094881a3daed",
@@ -124,12 +133,13 @@
       "templater-obsidian:Templater": false,
       "oz-clear-unused-images:Clear Unused Images": false,
       "obsidian42-brat:BRAT": false,
-      "periodic-notes:Open today": false,
-      "table-editor-obsidian:Advanced Tables Toolbar": false
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "periodic-notes:Open today": false
     }
   },
   "active": "86a4291f3a5fc606",
   "lastOpenFiles": [
+    "POSTGRES.md",
     "TYPESCRIPT.md",
     "weibo-journal/2023/February/2023-02-25 Saturday.md",
     "Untitled.canvas",
