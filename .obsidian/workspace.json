@@ -18,8 +18,21 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "0af3f284092f0a1f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "NEXTJS.md",
+                "mode": "source",
+                "source": false
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -66,8 +79,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       },
       {
         "id": "1545094881a3daed",
@@ -86,7 +98,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 251
+    "width": 251,
+    "collapsed": true
   },
   "right": {
     "id": "bc07a3e574b795ef",
@@ -102,7 +115,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "POSTGRES.md",
+                "file": "NEXTJS.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "alphabetical",
@@ -136,9 +149,10 @@
       "periodic-notes:Open today": false
     }
   },
-  "active": "86a4291f3a5fc606",
+  "active": "0af3f284092f0a1f",
   "lastOpenFiles": [
     "POSTGRES.md",
+    "NEXTJS.md",
     "TYPESCRIPT.md",
     "weibo-journal/2023/February/2023-02-25 Saturday.md",
     "Untitled.canvas",
